@@ -1,0 +1,72 @@
+# Gmail Inbox Intelligence
+
+Apify Actor for Gmail inbox workflow analytics — thread search, reply tracking, LLM summary, unread digest. Built on `gmail.readonly` OAuth scope. **Not a scraper, not a bulk sender.**
+
+## Features
+
+- **`thread_search`** — search Gmail threads by query, paginate, return metadata + message counts
+- **`reply_metrics`** — for each thread, compute reply-from-me / reply-from-others / last reply age / SLA breach flag
+- **`summarizer`** — optional OpenAI LLM thread summary (you supply your own API key)
+- **`unread_digest`** — list unread threads in last N hours, grouped by label
+
+## Use Cases
+
+- **Freelancer**: see which clients haven't replied yet, ranked by SLA breach
+- **Sales / BD**: surface stalled outbound threads before they go cold
+- **PM / Ops**: morning unread digest grouped by project label
+- **Personal**: weekly inbox audit without forwarding emails anywhere
+
+## Privacy & OAuth
+
+- You provide your own OAuth credentials in Actor input (`refresh_token` + `client_id` + `client_secret`)
+- Refresh-token-only flow — Actor exchanges for short-lived access token in memory each run
+- Job-end state is cleared (best effort)
+- **We never store your Gmail.** Every run uses your own OAuth, no server-side mailbox cache.
+
+## Pricing
+
+- **Free**: 100 threads / month
+- **Pro**: $19 / month (5000 threads metadata + 100 LLM summaries)
+- **Pay-per-result add-on**: $0.50 / 1,000 thread metadata, $0.005 / summary
+
+Payouts via Wise (international).
+
+## Input Schema (8 fields)
+
+| Field | Type | Required | Notes |
+|---|---|---|---|
+| `feature` | enum | yes | `thread_search` / `reply_metrics` / `summarizer` / `unread_digest` |
+| `oauth_token` | object | yes | `{refresh_token, client_id, client_secret}` |
+| `query` | string | no | Gmail search query (default `in:inbox`) |
+| `max_results` | integer | no | default 50, max 500 |
+| `openai_api_key` | string | no | required only for `summarizer` |
+| `summary_model` | string | no | default `gpt-4o-mini` |
+| `free_tier_user_id` | string | no | for free-tier quota tracking |
+| `dry_run` | boolean | no | skip Gmail API calls (test mode) |
+
+See `.actor/INPUT_SCHEMA.json` for full spec.
+
+## Local Dev
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+pytest               # 6 tests, asyncio_mode=auto
+apify run            # local actor run with .actor/INPUT_SCHEMA.json
+```
+
+## Related Projects
+
+Looking for ready-to-import Gmail / AI / n8n templates? Some Gumroad workflows that pair well with this Actor:
+
+- **AI Lead Auto-Responder** — Gmail → AI replies n8n workflow: https://foxck.gumroad.com/l/ai-lead-responder
+- **AI Content Pipeline** — RSS → Social Media n8n template: https://foxck.gumroad.com/l/ai-content-pipeline
+- **Competitor Monitor** — Daily AI analysis + weekly reports n8n: https://foxck.gumroad.com/l/competitor-monitor
+- **Claude Code Mastery** — practical playbook for Claude Code workflows: https://foxck.gumroad.com/l/claude-code-mastery
+
+Full catalog: https://foxck.gumroad.com
+
+## License
+
+MIT — see `LICENSE`.

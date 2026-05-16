@@ -1,0 +1,84 @@
+{
+  "title": "Gmail Inbox Intelligence Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "feature": {
+      "title": "Feature",
+      "type": "string",
+      "description": "Choose which workflow to run.",
+      "enum": [
+        "thread_search",
+        "reply_metrics",
+        "summarizer",
+        "unread_digest"
+      ],
+      "default": "thread_search"
+    },
+    "query": {
+      "title": "Gmail Query",
+      "type": "string",
+      "description": "Gmail search query syntax, e.g. newer_than:7d in:inbox"
+    },
+    "max_results": {
+      "title": "Max Results",
+      "type": "integer",
+      "description": "Maximum number of threads to inspect in this run.",
+      "default": 50,
+      "minimum": 1,
+      "maximum": 500
+    },
+    "oauth_token": {
+      "title": "OAuth Config",
+      "type": "object",
+      "description": "Your own Gmail OAuth values. We do not persist your Gmail data or token secrets.",
+      "editor": "json",
+      "properties": {
+        "refresh_token": {
+          "type": "string",
+          "description": "OAuth refresh token for Gmail API"
+        },
+        "client_id": {
+          "type": "string",
+          "description": "Google OAuth client ID"
+        },
+        "client_secret": {
+          "type": "string",
+          "description": "Google OAuth client secret"
+        }
+      },
+      "required": [
+        "refresh_token",
+        "client_id",
+        "client_secret"
+      ]
+    },
+    "openai_api_key": {
+      "title": "LLM API Key (Optional)",
+      "type": "string",
+      "description": "Optional API key for summary feature only.",
+      "isSecret": true
+    },
+    "summary_model": {
+      "title": "Summary Model",
+      "type": "string",
+      "description": "Optional model name for summarizer feature.",
+      "default": "gpt-4o-mini"
+    },
+    "free_tier_user_id": {
+      "title": "Free Tier User ID",
+      "type": "string",
+      "description": "Stable identifier for monthly free quota tracking in KeyValueStore."
+    },
+    "dry_run": {
+      "title": "Dry Run",
+      "type": "boolean",
+      "description": "If true, validates input and auth flow without full feature execution.",
+      "default": false
+    }
+  },
+  "required": [
+    "feature",
+    "oauth_token"
+  ]
+}

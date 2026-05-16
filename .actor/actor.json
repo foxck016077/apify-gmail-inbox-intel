@@ -1,0 +1,18 @@
+{
+  "actorSpecification": 1,
+  "name": "gmail-inbox-intel",
+  "title": "Gmail Inbox Intelligence",
+  "description": "Thread search, reply tracking, optional summaries, and unread digest for your own Gmail inbox.",
+  "version": "0.1",
+  "buildTag": "latest",
+  "meta": {
+    "templateId": "python-start"
+  },
+  "input": "./INPUT_SCHEMA.json",
+  "dockerfile": "./Dockerfile",
+  "storages": {
+    "dataset": "default",
+    "keyValueStore": "default",
+    "requestQueue": "default"
+  }
+}

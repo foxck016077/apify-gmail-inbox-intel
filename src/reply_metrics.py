@@ -1,0 +1,92 @@
+from __future__ import annotations
+
+from datetime import datetime, timezone
+from email.utils import parseaddr
+from statistics import mean
+from typing import Any, Dict, List
+
+from .quota import enforce_and_consume_quota
+
+
+def _execute(req):
+    return req.execute()
+
+
+def _extract_domain(sender: str) -> str:
+    _, addr = parseaddr(sender or "")
+    return addr.split("@")[-1].lower() if "@" in addr else ""
+
+
+def _dt_from_ms(ms: str | None) -> datetime:
+    v = int(ms or 0) / 1000
+    return datetime.fromtimestamp(v, tz=timezone.utc)
+
+
+def _thread_sender_domain(thread: Dict[str, Any]) -> str:
+    first = (thread.get("messages") or [{}])[0]
+    headers = first.get("payload", {}).get("headers", [])
+    sender = ""
+    for h in headers:
+        if (h.get("name") or "").lower() == "from":
+            sender = h.get("value") or ""
+            break
+    return _extract_domain(sender)
+
+
+async def run_reply_metrics(input_data: Dict[str, Any], gmail_service) -> Dict[str, Any]:
+    query = input_data.get("query") or "in:inbox"
+    max_results = int(input_data.get("max_results") or 50)
+    domains = {d.lower() for d in (input_data.get("from_domains") or []) if d}
+    sla_days = int(input_data.get("sla_days") or 7)
+
+    list_resp = _execute(
+        gmail_service.users().threads().list(userId="me", q=query, maxResults=max_results)
+    )
+    refs = list_resp.get("threads", [])
+
+    now = datetime.now(timezone.utc)
+    over_sla: List[Dict[str, Any]] = []
+    responded: List[Dict[str, Any]] = []
+    response_hours: List[float] = []
+
+    for ref in refs:
+        thread = _execute(gmail_service.users().threads().get(userId="me", id=ref["id"], format="metadata"))
+        domain = _thread_sender_domain(thread)
+        if domains and domain not in domains:
+            continue
+
+        messages = thread.get("messages") or []
+        if not messages:
+            continue
+        last_dt = _dt_from_ms(messages[-1].get("internalDate"))
+        days_since = (now - last_dt).total_seconds() / 86400
+        item = {
+            "thread_id": thread.get("id"),
+            "last_message_at": last_dt.isoformat(),
+            "days_since_last_reply": round(days_since, 2),
+            "over_sla": days_since > sla_days,
+            "reply_chain_length": len(messages),
+            "sender_domain": domain,
+        }
+
+        if len(messages) >= 2:
+            first_dt = _dt_from_ms(messages[0].get("internalDate"))
+            response_hours.append((last_dt - first_dt).total_seconds() / 3600)
+
+        if item["over_sla"]:
+            over_sla.append(item)
+        else:
+            responded.append(item)
+
+    quota = await enforce_and_consume_quota(input_data.get("free_tier_user_id"), len(over_sla) + len(responded))
+
+    return {
+        "threads_over_sla": over_sla,
+        "threads_responded": responded,
+        "summary": {
+            "total": len(over_sla) + len(responded),
+            "over_sla_count": len(over_sla),
+            "avg_response_hours": round(mean(response_hours), 2) if response_hours else 0,
+        },
+        "quota": quota,
+    }
