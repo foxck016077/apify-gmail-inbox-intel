@@ -57,7 +57,7 @@ Payouts via Wise (international).
 | `free_tier_user_id` | string | no | for free-tier quota tracking |
 | `dry_run` | boolean | no | skip Gmail API calls (test mode) |
 
-See `.actor/INPUT_SCHEMA.json` for full spec.
+See `.actor/INPUT_SCHEMA.json` for full spec, and [`examples/`](examples/) for 5 ready-to-paste input JSON files per feature.
 
 ## Local Dev
 

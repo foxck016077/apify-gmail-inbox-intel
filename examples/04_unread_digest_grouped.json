@@ -1,0 +1,10 @@
+{
+  "feature": "unread_digest",
+  "oauth_token": {
+    "refresh_token": "1//0gAAAA-replace-with-your-refresh-token",
+    "client_id": "1234567890-abc.apps.googleusercontent.com",
+    "client_secret": "GOCSPX-replace-with-your-client-secret"
+  },
+  "max_results": 50,
+  "dry_run": false
+}

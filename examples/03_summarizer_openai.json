@@ -1,0 +1,13 @@
+{
+  "feature": "summarizer",
+  "oauth_token": {
+    "refresh_token": "1//0gAAAA-replace-with-your-refresh-token",
+    "client_id": "1234567890-abc.apps.googleusercontent.com",
+    "client_secret": "GOCSPX-replace-with-your-client-secret"
+  },
+  "query": "is:unread newer_than:3d",
+  "max_results": 10,
+  "openai_api_key": "sk-replace-with-your-openai-key",
+  "summary_model": "gpt-4o-mini",
+  "dry_run": false
+}
