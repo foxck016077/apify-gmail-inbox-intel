@@ -1,5 +1,6 @@
 # Gmail Inbox Intelligence
 
+[![test](https://github.com/foxck016077/apify-gmail-inbox-intel/actions/workflows/test.yml/badge.svg)](https://github.com/foxck016077/apify-gmail-inbox-intel/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![OAuth: refresh-token-only](https://img.shields.io/badge/OAuth-refresh--token--only-green.svg)](#privacy--oauth)
