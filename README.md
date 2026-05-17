@@ -18,7 +18,15 @@
   <img src=".actor/screenshot-output.png" alt="reply_metrics output preview — synthetic demo data" width="720" />
 </p>
 
-A self-host-friendly [Apify Actor](https://apify.com/actors) for Gmail inbox workflow analytics — thread search, reply tracking, LLM summary, unread digest. Built on `gmail.readonly` OAuth scope. **Not a scraper, not a bulk sender, not a mailbox archiver.**
+A free, MIT-licensed [Apify Actor](https://apify.com/actors) for Gmail inbox workflow analytics — thread search, reply tracking, LLM summary, unread digest. Built on `gmail.readonly` OAuth scope. **Not a scraper, not a bulk sender, not a mailbox archiver.**
+
+## 30-second start
+
+1. **Click Run** on [apify.com/foxck/gmail-inbox-intel](https://apify.com/foxck/gmail-inbox-intel) (or `apify call foxck/gmail-inbox-intel` from CLI)
+2. **Paste 3 OAuth fields** (`refresh_token`, `client_id`, `client_secret`) — see [OAUTH.md](OAUTH.md) for the 5-minute Google Cloud setup
+3. **Read the dataset** — for `reply_metrics`, you get stalled threads ranked by SLA breach age, ready to paste into Friday triage
+
+No subscription. No server-side mailbox cache. The Actor runs against the official Gmail API in `readonly` scope and exits.
 
 📖 Design notes on dev.to — [**series index**](https://dev.to/foxck016077/series/39719):
 - [Apify Actor for Gmail inbox analytics: refresh-token-only OAuth, async router, per-feature quota](https://dev.to/foxck016077/an-apify-actor-for-gmail-inbox-analytics-a-refresh-token-only-oauth-async-router-per-feature-pi2)
@@ -44,10 +52,10 @@ A self-host-friendly [Apify Actor](https://apify.com/actors) for Gmail inbox wor
 
 ## Use Cases
 
-- **Freelancer**: see which clients haven't replied yet, ranked by SLA breach
-- **Sales / BD**: surface stalled outbound threads before they go cold
-- **PM / Ops**: morning unread digest grouped by project label
-- **Personal**: weekly inbox audit without forwarding emails anywhere
+- **Freelancer Friday triage**: `reply_metrics` against `from:client-domains newer_than:21d`, sort by `last_reply_age_days desc`, send Day-3/7/14 bumps to anything past the threshold. Replaces a CRM if you have < 50 active threads.
+- **Sales / BD pipeline rot**: `reply_metrics` against `label:outbound` weekly, alert when `reply_from_other` is empty 14d+. Cheaper than HubSpot for a small list.
+- **PM / Ops morning digest**: `unread_digest` against the last 12h grouped by `label`. Cron from Apify schedule → email yourself the dataset URL.
+- **Personal weekly review**: `thread_search` for `is:starred OR label:important newer_than:7d` → triage backlog without forwarding emails to a third party.
 
 ## Privacy & OAuth
 
@@ -58,11 +66,9 @@ A self-host-friendly [Apify Actor](https://apify.com/actors) for Gmail inbox wor
 
 ## Pricing
 
-- **Free**: 100 threads / month
-- **Pro**: $19 / month (5000 threads metadata + 100 LLM summaries)
-- **Pay-per-result add-on**: $0.50 / 1,000 thread metadata, $0.005 / summary
+**Free.** MIT licensed. Run it on Apify (their compute-unit pricing applies — usually pennies per run) or fork and run on your own box.
 
-Payouts via Wise (international).
+The repo includes a `free_tier_user_id` quota hook for future-self if you want to wrap it as a paid SaaS, but no billing layer ships with this Actor. If you'd rather pay for a setup instead of self-hosting OAuth, the [$9 manual companion pack](https://foxck.gumroad.com/l/freelancer-gmail-tracking-pack) below skips OAuth entirely.
 
 ## Input Schema (8 fields)
 
