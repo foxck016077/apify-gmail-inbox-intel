@@ -7,6 +7,7 @@
       "title": "Feature",
       "type": "string",
       "description": "Choose which workflow to run.",
+      "editor": "select",
       "enum": [
         "thread_search",
         "reply_metrics",
@@ -18,7 +19,8 @@
     "query": {
       "title": "Gmail Query",
       "type": "string",
-      "description": "Gmail search query syntax, e.g. newer_than:7d in:inbox"
+      "description": "Gmail search query syntax, e.g. newer_than:7d in:inbox",
+      "editor": "textfield"
     },
     "max_results": {
       "title": "Max Results",
@@ -35,16 +37,22 @@
       "editor": "json",
       "properties": {
         "refresh_token": {
+          "title": "Refresh Token",
           "type": "string",
-          "description": "OAuth refresh token for Gmail API"
+          "description": "OAuth refresh token for Gmail API",
+          "editor": "textfield"
         },
         "client_id": {
+          "title": "Client ID",
           "type": "string",
-          "description": "Google OAuth client ID"
+          "description": "Google OAuth client ID",
+          "editor": "textfield"
         },
         "client_secret": {
+          "title": "Client Secret",
           "type": "string",
-          "description": "Google OAuth client secret"
+          "description": "Google OAuth client secret",
+          "editor": "textfield"
         }
       },
       "required": [
@@ -57,23 +65,27 @@
       "title": "LLM API Key (Optional)",
       "type": "string",
       "description": "Optional API key for summary feature only.",
+      "editor": "textfield",
       "isSecret": true
     },
     "summary_model": {
       "title": "Summary Model",
       "type": "string",
       "description": "Optional model name for summarizer feature.",
+      "editor": "textfield",
       "default": "gpt-4o-mini"
     },
     "free_tier_user_id": {
       "title": "Free Tier User ID",
       "type": "string",
-      "description": "Stable identifier for monthly free quota tracking in KeyValueStore."
+      "description": "Stable identifier for monthly free quota tracking in KeyValueStore.",
+      "editor": "textfield"
     },
     "dry_run": {
       "title": "Dry Run",
       "type": "boolean",
       "description": "If true, validates input and auth flow without full feature execution.",
+      "editor": "checkbox",
       "default": false
     }
   },
