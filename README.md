@@ -28,6 +28,8 @@ A self-host-friendly [Apify Actor](https://apify.com/actors) for Gmail inbox wor
 - [Open-sourcing an MIT Apify Actor in 24 hours — a build log](https://dev.to/foxck016077/open-sourcing-an-mit-apify-actor-in-24-hours-a-build-log-53km)
 
 💬 [Discussions](https://github.com/foxck016077/apify-gmail-inbox-intel/discussions) — design questions, roadmap, open trade-offs.
+🗺️ [Roadmap](ROADMAP.md) — what's planned, what's speculative, what's explicitly out of scope.
+📝 [Changelog](CHANGELOG.md) — what changed in each release.
 
 ## Features
 
