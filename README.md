@@ -32,6 +32,9 @@ A self-host-friendly [Apify Actor](https://apify.com/actors) for Gmail inbox wor
 📝 [Changelog](CHANGELOG.md) — what changed in each release.
 💝 [Gumroad listing](https://foxck.gumroad.com/l/apify-gmail-inbox-intel) — pay-what-you-want download + email updates when new releases ship.
 
+> **Don't want to self-host?** If you have < 50 active client threads, the manual setup is probably easier:
+> **[Freelancer Gmail Client Tracking Pack — $9](https://foxck.gumroad.com/l/freelancer-gmail-tracking-pack)** — 30 labels + 12 filters + 5 follow-up email templates + Apps Script. Setup in 20 min, no CRM, no subscription. Same SLA-breach detection, manual version.
+
 ## Features
 
 - **`thread_search`** — search Gmail threads by query, paginate, return metadata + message counts
