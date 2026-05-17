@@ -30,6 +30,7 @@ A self-host-friendly [Apify Actor](https://apify.com/actors) for Gmail inbox wor
 💬 [Discussions](https://github.com/foxck016077/apify-gmail-inbox-intel/discussions) — design questions, roadmap, open trade-offs.
 🗺️ [Roadmap](ROADMAP.md) — what's planned, what's speculative, what's explicitly out of scope.
 📝 [Changelog](CHANGELOG.md) — what changed in each release.
+💝 [Gumroad listing](https://foxck.gumroad.com/l/apify-gmail-inbox-intel) — pay-what-you-want download + email updates when new releases ship.
 
 ## Features
 
