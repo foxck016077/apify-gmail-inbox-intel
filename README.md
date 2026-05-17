@@ -1,12 +1,24 @@
-# Gmail Inbox Intelligence
+<p align="center">
+  <img src=".actor/icon.png" alt="Gmail Inbox Intelligence" width="120" height="120" />
+</p>
 
-[![test](https://github.com/foxck016077/apify-gmail-inbox-intel/actions/workflows/test.yml/badge.svg)](https://github.com/foxck016077/apify-gmail-inbox-intel/actions/workflows/test.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![OAuth: refresh-token-only](https://img.shields.io/badge/OAuth-refresh--token--only-green.svg)](#privacy--oauth)
-[![Scope: gmail.readonly](https://img.shields.io/badge/Gmail%20scope-readonly-blue.svg)](https://developers.google.com/gmail/api/auth/scopes)
+<h1 align="center">Gmail Inbox Intelligence</h1>
 
-Apify Actor for Gmail inbox workflow analytics — thread search, reply tracking, LLM summary, unread digest. Built on `gmail.readonly` OAuth scope. **Not a scraper, not a bulk sender.**
+<p align="center"><strong>Reply tracking, SLA monitoring, and unread digests for your Gmail — without a scraper, without a bulk sender, without storing your mailbox.</strong></p>
+
+<p align="center">
+  <a href="https://github.com/foxck016077/apify-gmail-inbox-intel/actions/workflows/test.yml"><img src="https://github.com/foxck016077/apify-gmail-inbox-intel/actions/workflows/test.yml/badge.svg" alt="test" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" /></a>
+  <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.10+-blue.svg" alt="Python 3.10+" /></a>
+  <a href="#privacy--oauth"><img src="https://img.shields.io/badge/OAuth-refresh--token--only-green.svg" alt="OAuth: refresh-token-only" /></a>
+  <a href="https://developers.google.com/gmail/api/auth/scopes"><img src="https://img.shields.io/badge/Gmail%20scope-readonly-blue.svg" alt="Scope: gmail.readonly" /></a>
+</p>
+
+<p align="center">
+  <img src=".actor/screenshot-output.png" alt="reply_metrics output preview — synthetic demo data" width="720" />
+</p>
+
+A self-host-friendly [Apify Actor](https://apify.com/actors) for Gmail inbox workflow analytics — thread search, reply tracking, LLM summary, unread digest. Built on `gmail.readonly` OAuth scope. **Not a scraper, not a bulk sender, not a mailbox archiver.**
 
 📖 Design notes on dev.to — [**series index**](https://dev.to/foxck016077/series/39719):
 - [Apify Actor for Gmail inbox analytics: refresh-token-only OAuth, async router, per-feature quota](https://dev.to/foxck016077/an-apify-actor-for-gmail-inbox-analytics-a-refresh-token-only-oauth-async-router-per-feature-pi2)
@@ -60,6 +72,10 @@ Payouts via Wise (international).
 | `dry_run` | boolean | no | skip Gmail API calls (test mode) |
 
 See `.actor/INPUT_SCHEMA.json` for full spec, and [`examples/`](examples/) for 5 ready-to-paste input JSON files per feature.
+
+<p align="center">
+  <img src=".actor/screenshot-input.png" alt="Actor input — OAuth fields masked for demo" width="720" />
+</p>
 
 ## Local Dev
 
