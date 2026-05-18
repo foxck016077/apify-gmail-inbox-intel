@@ -106,6 +106,8 @@ apify run            # local actor run with .actor/INPUT_SCHEMA.json
 
 ## Related Projects
 
+Browsing the Apify ecosystem? See [**awesome-apify-actors**](https://github.com/foxck016077/awesome-apify-actors) — a curated list of 68+ production Apify Actors across 16 categories (Scrapers, Search, Maps, Social media, Lead gen, Email). This Actor is listed under *Email & Productivity*.
+
 Looking for ready-to-import Gmail / AI / n8n templates? Some Gumroad workflows that pair well with this Actor:
 
 - **AI Lead Auto-Responder** — Gmail → AI replies n8n workflow: https://foxck.gumroad.com/l/ai-lead-responder
