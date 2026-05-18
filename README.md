@@ -36,6 +36,9 @@ No subscription. No server-side mailbox cache. The Actor runs against the offici
 - [Why refresh-token-only OAuth for a multi-tenant Apify Actor](https://dev.to/foxck016077/why-i-picked-refresh-token-only-oauth-for-a-multi-tenant-apify-actor-265c)
 - [Per-feature quota in Apify KeyValueStore — no DB, no cron, no drift](https://dev.to/foxck016077/per-feature-quota-in-apify-keyvaluestore-no-db-no-cron-no-drift-36p4)
 - [Open-sourcing an MIT Apify Actor in 24 hours — a build log](https://dev.to/foxck016077/open-sourcing-an-mit-apify-actor-in-24-hours-a-build-log-53km)
+- [Apify Actor pricing patterns: Free tier + Pro + Pay-per-result](https://dev.to/foxck016077/apify-actor-pricing-patterns-free-tier-pro-pay-per-result-designing-for-indie-buyers-4e4l)
+- [Spinning a $9 PDF off a $0 open-source actor in 4 hours — a build log](https://dev.to/foxck016077/spinning-a-9-pdf-off-a-0-open-source-actor-in-4-hours-a-build-log-2k7i)
+- **[7 articles, 1 star, 0 sales, 4 days — what an MIT open-source Apify Actor cold start actually looks like](https://dev.to/foxck016077/7-articles-1-star-0-sales-4-days-what-an-mit-open-source-apify-actor-cold-start-actually-looks-j7l)** (transparency data + 5 corrective patterns)
 
 💬 [Discussions](https://github.com/foxck016077/apify-gmail-inbox-intel/discussions) — design questions, roadmap, open trade-offs.
 🗺️ [Roadmap](ROADMAP.md) — what's planned, what's speculative, what's explicitly out of scope.
