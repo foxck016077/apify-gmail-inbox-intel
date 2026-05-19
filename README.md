@@ -46,7 +46,7 @@ No subscription. No server-side mailbox cache. The Actor runs against the offici
 💝 [Gumroad listing](https://foxck.gumroad.com/l/apify-gmail-inbox-intel) — pay-what-you-want download + email updates when new releases ship.
 
 > **Don't want to self-host?** If you have < 50 active client threads, the manual setup is probably easier:
-> **[Freelancer Gmail Client Tracking Pack — $9](https://foxck.gumroad.com/l/freelancer-gmail-tracking-pack)** — 30 labels + 12 filters + 5 follow-up email templates + Apps Script. Setup in 20 min, no CRM, no subscription. Same SLA-breach detection, manual version.
+> **[Freelancer Gmail Client Tracking Pack — $1+ PWYW](https://foxck.gumroad.com/l/freelancer-gmail-tracking-pack)** — 30 labels + 12 filters + 5 follow-up email templates + Apps Script + 26-page PREMIUM bundle PDF (9-article dev.to build log series compiled). Setup in 20 min, no CRM, no subscription. Pay what you want from $1, suggested $9. 30% affiliate program open — signup at [foxck.gumroad.com/affiliates](https://foxck.gumroad.com/affiliates).
 
 ## Features
 
@@ -73,7 +73,7 @@ No subscription. No server-side mailbox cache. The Actor runs against the offici
 
 **Free.** MIT licensed. Run it on Apify (their compute-unit pricing applies — usually pennies per run) or fork and run on your own box.
 
-The repo includes a `free_tier_user_id` quota hook for future-self if you want to wrap it as a paid SaaS, but no billing layer ships with this Actor. If you'd rather pay for a setup instead of self-hosting OAuth, the [$9 manual companion pack](https://foxck.gumroad.com/l/freelancer-gmail-tracking-pack) below skips OAuth entirely.
+The repo includes a `free_tier_user_id` quota hook for future-self if you want to wrap it as a paid SaaS, but no billing layer ships with this Actor. If you'd rather pay for a setup instead of self-hosting OAuth, the [PWYW $1+ manual companion pack](https://foxck.gumroad.com/l/freelancer-gmail-tracking-pack) (now includes a 26-page bundle PDF) skips OAuth entirely.
 
 ## Input Schema (8 fields)
 
