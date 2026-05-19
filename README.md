@@ -20,6 +20,28 @@
 
 A free, MIT-licensed [Apify Actor](https://apify.com/actors) for Gmail inbox workflow analytics — thread search, reply tracking, LLM summary, unread digest. Built on `gmail.readonly` OAuth scope. **Not a scraper, not a bulk sender, not a mailbox archiver.**
 
+## Who this is for
+
+- **Solo consultants / freelancers** — get a Friday triage list of client emails that went cold, ranked by how many days past your SLA the thread has been silent.
+- **Indie founders running sales by hand** — track which prospects you replied to last and which proposals are quietly dying.
+- **Devs building inbox automations** — use the Actor as a Gmail-API building block (refresh-token OAuth, per-feature quota in KVS, async router) for downstream tools.
+
+## Sample output (`reply_metrics`)
+
+```json
+{
+  "thread_id": "18c4f...",
+  "subject": "Re: Q3 redesign proposal",
+  "last_external_sender": "jane@acme.com",
+  "your_last_reply_at": "2026-04-28T09:14:00Z",
+  "days_since_your_reply": 11,
+  "sla_breach_days": 4,
+  "stalled_score": 0.81
+}
+```
+
+`stalled_score` ranks the most actionable threads to the top of your Friday triage. See [`examples/05_dry_run_test.json`](examples/05_dry_run_test.json) for a full synthetic run.
+
 ## 30-second start
 
 1. **Click Run** on [apify.com/foxck/gmail-inbox-intel](https://apify.com/foxck/gmail-inbox-intel) (or `apify call foxck/gmail-inbox-intel` from CLI)
