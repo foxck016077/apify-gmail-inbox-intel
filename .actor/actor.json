@@ -2,7 +2,7 @@
   "actorSpecification": 1,
   "name": "gmail-inbox-intel",
   "title": "Gmail Inbox Intelligence",
-  "description": "Thread search, reply tracking, optional summaries, and unread digest for your own Gmail inbox.",
+  "description": "Drops a Friday triage list of client emails that went cold — stalled threads ranked by SLA breach age. Click Run, paste 3 OAuth fields (gmail.readonly), read the dataset. No scraping, no bulk send, no mailbox cache. Free MIT, self-host bundle available.",
   "version": "0.1",
   "buildTag": "latest",
   "meta": {
