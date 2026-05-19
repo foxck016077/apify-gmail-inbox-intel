@@ -45,8 +45,8 @@ No subscription. No server-side mailbox cache. The Actor runs against the offici
 📝 [Changelog](CHANGELOG.md) — what changed in each release.
 💝 [Gumroad listing](https://foxck.gumroad.com/l/apify-gmail-inbox-intel) — pay-what-you-want download + email updates when new releases ship.
 
-> **Don't want to self-host?** If you have < 50 active client threads, the manual setup is probably easier:
-> **[Freelancer Gmail Client Tracking Pack — $1+ PWYW](https://foxck.gumroad.com/l/freelancer-gmail-tracking-pack)** — 30 labels + 12 filters + 5 follow-up email templates + Apps Script + 26-page PREMIUM bundle PDF (9-article dev.to build log series compiled). Setup in 20 min, no CRM, no subscription. Pay what you want from $1, suggested $9. 30% affiliate program open — signup at [foxck.gumroad.com/affiliates](https://foxck.gumroad.com/affiliates).
+> **Want to self-host this Actor?** Bundle the full source + `docker-compose.yml` + OAuth setup script + docs into one PWYW download:
+> **[Gmail Inbox Intel — Self-Host Bundle](https://foxck.gumroad.com/l/freelancer-gmail-tracking-pack)** — Apify Actor source (Python 3.11, MIT), Docker Compose stack, 5-minute OAuth setup, local KVS storage, no Apify cloud lock-in. Same listing also bundles the original Freelancer Gmail Tracking Pack (30 labels + 12 filters + 5 email templates + Apps Script + 26-page PREMIUM bundle PDF) as a bonus. Pay what you want from $5, suggested $19. 30% affiliate at [foxck.gumroad.com/affiliates](https://foxck.gumroad.com/affiliates).
 
 ## Features
 
