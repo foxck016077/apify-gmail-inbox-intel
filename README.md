@@ -30,7 +30,7 @@ No subscription. No server-side mailbox cache. The Actor runs against the offici
 
 **Want to see the output shape without setting up OAuth?** Set `"dry_run": true` in the input and the Actor skips Gmail entirely, emitting a 3-row synthetic dataset per feature so you can wire up downstream tooling first. See [`examples/05_dry_run_test.json`](examples/05_dry_run_test.json) or this sample run: [Apify console run JnZVfjPrexOfeoSdF](https://console.apify.com/actors/w1viWQDuCUooRYfzk/runs/88ZYxNKtcKiReuDET).
 
-📖 Design notes on dev.to — [**series index**](https://dev.to/foxck016077/series/39719):
+📖 Design notes + build log on dev.to — [**ZERO-TEN cold-start build log (11 posts)**](https://dev.to/foxck016077/series/39853):
 - [Apify Actor for Gmail inbox analytics: refresh-token-only OAuth, async router, per-feature quota](https://dev.to/foxck016077/an-apify-actor-for-gmail-inbox-analytics-a-refresh-token-only-oauth-async-router-per-feature-pi2)
 - [Gmail OAuth client_id is not a secret — design notes for self-host Actors](https://dev.to/foxck016077/gmail-oauth-clientid-is-not-a-secret-a-design-notes-for-self-host-actors-19af)
 - [Why refresh-token-only OAuth for a multi-tenant Apify Actor](https://dev.to/foxck016077/why-i-picked-refresh-token-only-oauth-for-a-multi-tenant-apify-actor-265c)
@@ -38,7 +38,10 @@ No subscription. No server-side mailbox cache. The Actor runs against the offici
 - [Open-sourcing an MIT Apify Actor in 24 hours — a build log](https://dev.to/foxck016077/open-sourcing-an-mit-apify-actor-in-24-hours-a-build-log-53km)
 - [Apify Actor pricing patterns: Free tier + Pro + Pay-per-result](https://dev.to/foxck016077/apify-actor-pricing-patterns-free-tier-pro-pay-per-result-designing-for-indie-buyers-4e4l)
 - [Spinning a $9 PDF off a $0 open-source actor in 4 hours — a build log](https://dev.to/foxck016077/spinning-a-9-pdf-off-a-0-open-source-actor-in-4-hours-a-build-log-2k7i)
-- **[7 articles, 1 star, 0 sales, 4 days — what an MIT open-source Apify Actor cold start actually looks like](https://dev.to/foxck016077/7-articles-1-star-0-sales-4-days-what-an-mit-open-source-apify-actor-cold-start-actually-looks-j7l)** (transparency data + 5 corrective patterns)
+- [7 articles, 1 star, 0 sales, 4 days — what an MIT open-source Apify Actor cold start actually looks like](https://dev.to/foxck016077/7-articles-1-star-0-sales-4-days-what-an-mit-open-source-apify-actor-cold-start-actually-looks-j7l)
+- [Cold start day 6 — switching the $9 PDF to pay-what-you-want and opening 30% affiliate](https://dev.to/foxck016077/cold-start-day-6-switching-the-9-pdf-to-pay-what-you-want-and-opening-30-affiliate-37im)
+- [Day 7 — funnel audit found 7 of 9 articles had no buy link, then I pivoted the product](https://dev.to/foxck016077/day-7-funnel-audit-found-7-of-9-articles-had-no-buy-link-then-i-pivoted-the-product-10ci)
+- **[Day 8 — I scraped 5 freelance Gumroad top sellers. All 5 wrote one thing I didn't.](https://dev.to/foxck016077/day-8-i-scraped-5-freelance-gumroad-top-sellers-all-5-wrote-one-thing-i-didnt-4o0)** (outcome-first vs problem-first hook hypothesis)
 
 💬 [Discussions](https://github.com/foxck016077/apify-gmail-inbox-intel/discussions) — design questions, roadmap, open trade-offs.
 🗺️ [Roadmap](ROADMAP.md) — what's planned, what's speculative, what's explicitly out of scope.
