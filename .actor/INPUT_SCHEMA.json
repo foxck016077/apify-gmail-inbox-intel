@@ -1,5 +1,6 @@
 {
   "title": "Gmail Inbox Intelligence Input",
+  "description": "Drops a Friday triage list of stalled Gmail client threads by SLA breach age. gmail.readonly only, no scraper, no bulk sender. Don't want to set OAuth up yourself? $99 Done-For-You triage report on Gumroad — I run the scan, you get the 1-page report in 7 days.",
   "type": "object",
   "schemaVersion": 1,
   "properties": {
