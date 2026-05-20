@@ -65,7 +65,10 @@ No subscription. No server-side mailbox cache. The Actor runs against the offici
 - [7 articles, 1 star, 0 sales, 4 days — what an MIT open-source Apify Actor cold start actually looks like](https://dev.to/foxck016077/7-articles-1-star-0-sales-4-days-what-an-mit-open-source-apify-actor-cold-start-actually-looks-j7l)
 - [Cold start day 6 — switching the $9 PDF to pay-what-you-want and opening 30% affiliate](https://dev.to/foxck016077/cold-start-day-6-switching-the-9-pdf-to-pay-what-you-want-and-opening-30-affiliate-37im)
 - [Day 7 — funnel audit found 7 of 9 articles had no buy link, then I pivoted the product](https://dev.to/foxck016077/day-7-funnel-audit-found-7-of-9-articles-had-no-buy-link-then-i-pivoted-the-product-10ci)
-- **[Day 8 — I scraped 5 freelance Gumroad top sellers. All 5 wrote one thing I didn't.](https://dev.to/foxck016077/day-8-i-scraped-5-freelance-gumroad-top-sellers-all-5-wrote-one-thing-i-didnt-4o0)** (outcome-first vs problem-first hook hypothesis)
+- [Day 8 — I scraped 5 freelance Gumroad top sellers. All 5 wrote one thing I didn't.](https://dev.to/foxck016077/day-8-i-scraped-5-freelance-gumroad-top-sellers-all-5-wrote-one-thing-i-didnt-4o0) (outcome-first vs problem-first hook hypothesis)
+- [Day 9 — a 41k-follower Douyin AI-agent creator showed me what I'm missing](https://dev.to/foxck016077/day-9-a-41k-follower-douyin-ai-agent-creator-showed-me-what-im-missing-e3c)
+- [Day 9 — PWYW vs $99 lifetime: a back-of-envelope answer to @tokidigital's pricing question](https://dev.to/foxck016077/pwyw-vs-99-lifetime-a-back-of-envelope-answer-to-tokidigitals-pricing-question-5ebl)
+- **[Day 9 — How to set up refresh-token-only OAuth for a multi-tenant Apify Actor (Gmail, 10 minutes)](https://dev.to/foxck016077/how-to-set-up-refresh-token-only-oauth-for-a-multi-tenant-apify-actor-gmail-10-minutes-2l6l)** (reader-centric tutorial; PR'd upstream to [apify/apify-docs#2549](https://github.com/apify/apify-docs/pull/2549))
 
 💬 [Discussions](https://github.com/foxck016077/apify-gmail-inbox-intel/discussions) — design questions, roadmap, open trade-offs.
 🙋 [**AMA thread is open**](https://github.com/foxck016077/apify-gmail-inbox-intel/discussions/16) — ask anything about Gmail-as-CRM, stalled-thread scoring, refresh-token OAuth, KVS quota patterns. Answers go back into the docs.
