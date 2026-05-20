@@ -12,6 +12,9 @@
   <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.10+-blue.svg" alt="Python 3.10+" /></a>
   <a href="#privacy--oauth"><img src="https://img.shields.io/badge/OAuth-refresh--token--only-green.svg" alt="OAuth: refresh-token-only" /></a>
   <a href="https://developers.google.com/gmail/api/auth/scopes"><img src="https://img.shields.io/badge/Gmail%20scope-readonly-blue.svg" alt="Scope: gmail.readonly" /></a>
+  <a href="https://dev.to/foxck016077/series/39853"><img src="https://img.shields.io/badge/dev.to-14%20build--log%20posts-black?logo=devdotto" alt="dev.to series" /></a>
+  <a href="https://apify.com/foxck/gmail-inbox-intel"><img src="https://img.shields.io/badge/Apify%20Store-0.1.15-orange" alt="Apify Store build 0.1.15" /></a>
+  <a href="https://github.com/apify/apify-docs/pull/2549"><img src="https://img.shields.io/badge/upstream-apify%2Fapify--docs%232549-blue" alt="Upstream PR apify/apify-docs#2549" /></a>
 </p>
 
 <p align="center">
