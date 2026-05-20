@@ -4,7 +4,15 @@
 
 <h1 align="center">Gmail Inbox Intelligence</h1>
 
-<p align="center"><strong>Reply tracking, SLA monitoring, and unread digests for your Gmail — without a scraper, without a bulk sender, without storing your mailbox.</strong></p>
+<p align="center"><strong>You're losing deals you didn't know were dying.</strong></p>
+
+<p align="center">Friday triage list of stalled Gmail client threads ranked by SLA breach age. gmail.readonly only, no scraper, no bulk sender, no mailbox stored.</p>
+
+<p align="center">
+  <strong>$0 open template</strong> · 
+  <a href="https://foxck.gumroad.com/l/freelancer-gmail-tracking-pack"><strong>$19 self-host bundle</strong></a> · 
+  <strong>$99 done-for-you triage report</strong> (email me after Gumroad purchase, subject "DFY Triage")
+</p>
 
 <p align="center">
   <a href="https://github.com/foxck016077/apify-gmail-inbox-intel/actions/workflows/test.yml"><img src="https://github.com/foxck016077/apify-gmail-inbox-intel/actions/workflows/test.yml/badge.svg" alt="test" /></a>
@@ -12,8 +20,8 @@
   <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.10+-blue.svg" alt="Python 3.10+" /></a>
   <a href="#privacy--oauth"><img src="https://img.shields.io/badge/OAuth-refresh--token--only-green.svg" alt="OAuth: refresh-token-only" /></a>
   <a href="https://developers.google.com/gmail/api/auth/scopes"><img src="https://img.shields.io/badge/Gmail%20scope-readonly-blue.svg" alt="Scope: gmail.readonly" /></a>
-  <a href="https://dev.to/foxck016077/series/39853"><img src="https://img.shields.io/badge/dev.to-14%20build--log%20posts-black?logo=devdotto" alt="dev.to series" /></a>
-  <a href="https://apify.com/foxck/gmail-inbox-intel"><img src="https://img.shields.io/badge/Apify%20Store-0.1.15-orange" alt="Apify Store build 0.1.15" /></a>
+  <a href="https://dev.to/foxck016077/series/39853"><img src="https://img.shields.io/badge/dev.to-16%20build--log%20posts-black?logo=devdotto" alt="dev.to series" /></a>
+  <a href="https://apify.com/foxck/gmail-inbox-intel"><img src="https://img.shields.io/badge/Apify%20Store-0.1.19-orange" alt="Apify Store build 0.1.19" /></a>
   <a href="https://github.com/apify/apify-docs/pull/2549"><img src="https://img.shields.io/badge/upstream-apify%2Fapify--docs%232549-blue" alt="Upstream PR apify/apify-docs#2549" /></a>
 </p>
 
@@ -57,7 +65,7 @@ No subscription. No server-side mailbox cache. The Actor runs against the offici
 
 ⭐ **First stargazer:** thanks [@kuerdy](https://github.com/kuerdy) for the cold-start vote of confidence on 2026-05-18. First organic GitHub signal across the whole launch. If you have a Gmail-as-CRM question or just want to compare cold-start notes, the [AMA discussion](https://github.com/foxck016077/apify-gmail-inbox-intel/discussions/16) has your name on it.
 
-📖 Design notes + build log on dev.to — [**ZERO-TEN cold-start build log (14 posts)**](https://dev.to/foxck016077/series/39853):
+📖 Design notes + build log on dev.to — [**ZERO-TEN cold-start build log (16 posts)**](https://dev.to/foxck016077/series/39853):
 - [Apify Actor for Gmail inbox analytics: refresh-token-only OAuth, async router, per-feature quota](https://dev.to/foxck016077/an-apify-actor-for-gmail-inbox-analytics-a-refresh-token-only-oauth-async-router-per-feature-pi2)
 - [Gmail OAuth client_id is not a secret — design notes for self-host Actors](https://dev.to/foxck016077/gmail-oauth-clientid-is-not-a-secret-a-design-notes-for-self-host-actors-19af)
 - [Why refresh-token-only OAuth for a multi-tenant Apify Actor](https://dev.to/foxck016077/why-i-picked-refresh-token-only-oauth-for-a-multi-tenant-apify-actor-265c)
