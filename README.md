@@ -52,7 +52,9 @@ No subscription. No server-side mailbox cache. The Actor runs against the offici
 
 **Want to see the output shape without setting up OAuth?** Set `"dry_run": true` in the input and the Actor skips Gmail entirely, emitting a 3-row synthetic dataset per feature so you can wire up downstream tooling first. See [`examples/05_dry_run_test.json`](examples/05_dry_run_test.json) or this sample run: [Apify console run JnZVfjPrexOfeoSdF](https://console.apify.com/actors/w1viWQDuCUooRYfzk/runs/88ZYxNKtcKiReuDET).
 
-📖 Design notes + build log on dev.to — [**ZERO-TEN cold-start build log (11 posts)**](https://dev.to/foxck016077/series/39853):
+⭐ **First stargazer:** thanks [@kuerdy](https://github.com/kuerdy) for the cold-start vote of confidence on 2026-05-18. First organic GitHub signal across the whole launch. If you have a Gmail-as-CRM question or just want to compare cold-start notes, the [AMA discussion](https://github.com/foxck016077/apify-gmail-inbox-intel/discussions/16) has your name on it.
+
+📖 Design notes + build log on dev.to — [**ZERO-TEN cold-start build log (14 posts)**](https://dev.to/foxck016077/series/39853):
 - [Apify Actor for Gmail inbox analytics: refresh-token-only OAuth, async router, per-feature quota](https://dev.to/foxck016077/an-apify-actor-for-gmail-inbox-analytics-a-refresh-token-only-oauth-async-router-per-feature-pi2)
 - [Gmail OAuth client_id is not a secret — design notes for self-host Actors](https://dev.to/foxck016077/gmail-oauth-clientid-is-not-a-secret-a-design-notes-for-self-host-actors-19af)
 - [Why refresh-token-only OAuth for a multi-tenant Apify Actor](https://dev.to/foxck016077/why-i-picked-refresh-token-only-oauth-for-a-multi-tenant-apify-actor-265c)
