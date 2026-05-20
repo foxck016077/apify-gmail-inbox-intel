@@ -153,16 +153,16 @@ Full catalog: https://foxck.gumroad.com
 
 ## Roadmap
 
-### v0.2 — Web wrapper for non-developers (preview UI shipped)
+### v0.2 — Web wrapper for non-developers (OAuth wired, awaiting Cloud Console setup)
 
 The Apify Actor today targets builders comfortable with OAuth `client_secrets` and `INPUT.json`. `v0.2` is a hosted web app aimed at sales-side freelancers and consultants who want the same stalled-thread output without running Actors themselves:
 
-- One-click Google sign-in (no `client_secrets` handling) — coming in next milestone
+- One-click Google sign-in via NextAuth v5 + `gmail.readonly` scope only — **code wired**
 - Inbox table sorted by days silent, CSV download — **shipped in preview**
-- Same `gmail.readonly` scope, same read-only positioning, no outbound automation
-- Reuses the verified `reply_metrics` logic from this repo as the backend
+- `refresh_token` lives only on the server-side JWT, never on disk or in a database
+- Same read-only positioning, no outbound automation
 
-**Preview repo**: [`foxck016077/gmail-inbox-web`](https://github.com/foxck016077/gmail-inbox-web) — Next.js 16 + React 19 + Tailwind v4 + TypeScript. Runs locally now with sample data. OAuth lands in the next commit.
+**Preview repo**: [`foxck016077/gmail-inbox-web`](https://github.com/foxck016077/gmail-inbox-web) — Next.js 16 + React 19 + Tailwind v4 + TypeScript. NextAuth + Gmail API integration is in commit `256d2c8`. The only thing standing between the current repo and live sign-in is the one-time Google Cloud Console OAuth client registration plus 3 env vars on Vercel.
 
 Existing competitor landscape (verified 2026-05-20): Mailbutler ($4–$11/mo, tracking + signatures), Boomerang (snooze + scheduled send), Streak / Mixmax / Instantly ($15–$59/mo, Gmail CRM + mass outbound). No current player covers stalled-thread visualization as a read-only inbox health view. That gap is what `v0.2` targets.
 
