@@ -151,6 +151,23 @@ Looking for ready-to-import Gmail / AI / n8n templates? Some Gumroad workflows t
 
 Full catalog: https://foxck.gumroad.com
 
+## Roadmap
+
+### v0.2 — Web wrapper for non-developers (scoping)
+
+The Apify Actor today targets builders comfortable with OAuth client_secrets and `INPUT.json`. A `v0.2` spec is being scoped for a hosted web app aimed at sales-side freelancers and consultants who want the same stalled-thread output without running Actors themselves:
+
+- One-click Google sign-in (no client_secrets handling)
+- Inbox table sorted by days silent, CSV download
+- Same `gmail.readonly` scope, same read-only positioning, no outbound automation
+- Reuses the verified `reply_metrics` logic from this repo as the backend
+
+Full spec lives in [`triad/specs/SPEC-gmail-inbox-nondev-web-20260520.md`](https://github.com/foxck016077/apify-gmail-inbox-intel/discussions/16) (currently in the project's working notes; will be cross-posted to Discussions once the deployment domain is locked).
+
+Existing competitor landscape (verified 2026-05-20): Mailbutler ($4–$11/mo, tracking + signatures), Boomerang (snooze + scheduled send), Streak / Mixmax / Instantly ($15–$59/mo, Gmail CRM + mass outbound). No current player covers stalled-thread visualization as a read-only inbox health view. That gap is what `v0.2` targets.
+
+Have an opinion on what `v0.2` should look like before it ships? Open [Discussion #16](https://github.com/foxck016077/apify-gmail-inbox-intel/discussions/16).
+
 ## License
 
 MIT — see `LICENSE`.
