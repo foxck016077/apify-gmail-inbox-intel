@@ -11,7 +11,7 @@
 <p align="center">
   <strong>$0 open template</strong> · 
   <a href="https://foxck.gumroad.com/l/freelancer-gmail-tracking-pack"><strong>$19 self-host bundle</strong></a> · 
-  <strong>$99 done-for-you triage report</strong> (email me after Gumroad purchase, subject "DFY Triage")
+  <strong>$99 done-for-you triage report</strong> (email me after Gumroad purchase, subject "DFY Triage") · <a href="https://gist.github.com/foxck016077/a21454f7bb4f04d3550b0a606712f293">sample report preview</a>
 </p>
 
 <p align="center">

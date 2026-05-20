@@ -2,7 +2,7 @@
   "actorSpecification": 1,
   "name": "gmail-inbox-intel",
   "title": "Gmail Inbox Intelligence",
-  "description": "Drops a Friday triage list of client emails that went cold — stalled threads ranked by SLA breach age. Click Run, paste 3 OAuth fields (gmail.readonly), read the dataset. No scraping, no bulk send, no mailbox cache. Free MIT, self-host bundle available.",
+  "description": "Drops a Friday triage list of client emails gone cold — stalled threads ranked by SLA breach age. Run, paste 3 OAuth fields (gmail.readonly), read dataset. No scraping, no bulk send. MIT. Self-host bundle $19 / done-for-you triage $99 on Gumroad.",
   "version": "0.1",
   "buildTag": "latest",
   "meta": {
