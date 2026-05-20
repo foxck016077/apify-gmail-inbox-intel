@@ -66,6 +66,7 @@ No subscription. No server-side mailbox cache. The Actor runs against the offici
 - **[Day 8 — I scraped 5 freelance Gumroad top sellers. All 5 wrote one thing I didn't.](https://dev.to/foxck016077/day-8-i-scraped-5-freelance-gumroad-top-sellers-all-5-wrote-one-thing-i-didnt-4o0)** (outcome-first vs problem-first hook hypothesis)
 
 💬 [Discussions](https://github.com/foxck016077/apify-gmail-inbox-intel/discussions) — design questions, roadmap, open trade-offs.
+🙋 [**AMA thread is open**](https://github.com/foxck016077/apify-gmail-inbox-intel/discussions/16) — ask anything about Gmail-as-CRM, stalled-thread scoring, refresh-token OAuth, KVS quota patterns. Answers go back into the docs.
 🗺️ [Roadmap](ROADMAP.md) — what's planned, what's speculative, what's explicitly out of scope.
 📝 [Changelog](CHANGELOG.md) — what changed in each release.
 💝 [Gumroad listing](https://foxck.gumroad.com/l/apify-gmail-inbox-intel) — pay-what-you-want download + email updates when new releases ship.
