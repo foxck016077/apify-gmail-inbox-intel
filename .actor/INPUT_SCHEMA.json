@@ -23,7 +23,8 @@
       "type": "boolean",
       "description": "Check this on your first run. Returns a synthetic 5-thread output sample so you can see exactly what the Actor produces before setting up Gmail OAuth. Uncheck once OAuth is configured.",
       "editor": "checkbox",
-      "default": false
+      "default": false,
+      "prefill": true
     },
     "query": {
       "title": "Gmail Query",
