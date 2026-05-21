@@ -130,6 +130,10 @@ def _dry_run_sample(feature: str, input_data: Dict[str, Any]) -> list:
                     {"headline": "Acme Corp announces Series B funding round to expand Q4 product launch", "url": "https://example.com/acme-series-b", "pub_date": "Wed, 14 May 2026 09:00:00 GMT", "source": "TechCrunch"},
                     {"headline": "Acme appoints new VP of Operations from Stripe", "url": "https://example.com/acme-vp-ops", "pub_date": "Mon, 12 May 2026 11:30:00 GMT", "source": "Business Wire"},
                 ],
+                "draft_emails": [
+                    {"angle": "Series B funding (TechCrunch)", "draft": "Hey [Name], saw Acme just closed Series B — congrats. Last time we talked in March you were prioritizing Q3 ops scale-up; with the new runway, is the Q3 proposal we discussed still on the table or did it get reshuffled? Happy to update the scope if priorities shifted. One reply either way and I'll stop chasing."},
+                    {"angle": "New VP Ops hire (Business Wire)", "draft": "Hey [Name], noticed Acme just hired a new VP Ops from Stripe — congrats on the team build. Since the original Q3 proposal touched operational scale, would it make more sense for me to loop your new VP in directly, or is that conversation paused for now?"},
+                ],
                 "dry_run": True,
             },
             {
@@ -142,6 +146,7 @@ def _dry_run_sample(feature: str, input_data: Dict[str, Any]) -> list:
                 "suggested_angles": [
                     {"headline": "Studio Lume launches new Asia-Pacific design office", "url": "https://example.com/lume-apac", "pub_date": "Fri, 16 May 2026 14:00:00 GMT", "source": "Design Week"},
                 ],
+                "draft_emails": [],
                 "dry_run": True,
             },
         ]

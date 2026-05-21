@@ -13,6 +13,11 @@ from datetime import datetime, timezone
 from email.utils import parseaddr
 from typing import Any, Dict, List
 
+try:
+    from openai import AsyncOpenAI
+except ImportError:  # pragma: no cover
+    AsyncOpenAI = None  # type: ignore[assignment]
+
 from .quota import enforce_and_consume_quota
 
 
@@ -93,12 +98,68 @@ def _dt_from_ms(ms: str | None) -> datetime:
     return datetime.fromtimestamp(v, tz=timezone.utc)
 
 
+async def _generate_draft_emails(
+    subject: str,
+    company: str,
+    days_silent: float,
+    news_items: List[Dict[str, str]],
+    api_key: str,
+    model: str,
+) -> List[Dict[str, str]]:
+    """Optional LLM enrichment: draft 3 re-engage email options grounded in news headlines.
+
+    Buyer-voice grounding: r/sales 1tdngew commenter IceCapZoneAct1 explicitly asked
+    "AI to analyze context and give me the best approach".
+    """
+    if AsyncOpenAI is None or not api_key:
+        return []
+    usable_news = [n for n in news_items if n.get("headline") and "error" not in n]
+    if not usable_news:
+        return []
+
+    news_block = "\n".join(
+        f"- {n['headline']} ({n.get('source','?')}, {n.get('pub_date','?')})"
+        for n in usable_news[:5]
+    )
+    prompt = (
+        f"You are helping a salesperson re-engage a prospect who went silent {days_silent:.0f} days ago. "
+        f"Subject of the original thread: {subject!r}. Counterparty company: {company}.\n\n"
+        f"Recent news about {company}:\n{news_block}\n\n"
+        "Draft 3 short re-engagement email options. Each option must:\n"
+        "1. Reference ONE specific news item from above as the reason to reach out (no generic 'just circling back')\n"
+        "2. Acknowledge the time gap naturally\n"
+        "3. Keep the ask low-friction (one yes/no question or single-sentence offer)\n"
+        "4. Be 4 sentences max, plain language\n\n"
+        "Return JSON: {options: [{angle: <which news item>, draft: <email body>}, ...]}."
+    )
+
+    client = AsyncOpenAI(api_key=api_key)
+    completion = await client.responses.create(model=model, input=prompt, temperature=0.4)
+    raw = (completion.output_text or "").strip()
+    # try to extract JSON-ish, fall back to raw text
+    try:
+        import json as _json
+        m = re.search(r"\{.*\}", raw, re.DOTALL)
+        if m:
+            parsed = _json.loads(m.group(0))
+            opts = parsed.get("options") or []
+            return [
+                {"angle": str(o.get("angle", "")), "draft": str(o.get("draft", ""))}
+                for o in opts
+            ]
+    except Exception:
+        pass
+    return [{"angle": "raw_llm_output", "draft": raw[:500]}]
+
+
 async def run_reengage_angle(input_data: Dict[str, Any], gmail_service) -> Dict[str, Any]:
     query = input_data.get("query") or "in:inbox"
     max_results = int(input_data.get("max_results") or 30)
     sla_days = int(input_data.get("sla_days") or 14)
     news_lookback_days = int(input_data.get("news_lookback_days") or 90)
     max_news_per_thread = int(input_data.get("max_news_per_thread") or 5)
+    openai_api_key = (input_data.get("openai_api_key") or "").strip()
+    summary_model = input_data.get("summary_model") or "gpt-4o-mini"
 
     list_resp = _execute(
         gmail_service.users().threads().list(userId="me", q=query, maxResults=max_results)
@@ -136,6 +197,17 @@ async def run_reengage_angle(input_data: Dict[str, Any], gmail_service) -> Dict[
                 subject = h.get("value") or ""
                 break
 
+        draft_emails: List[Dict[str, str]] = []
+        if openai_api_key:
+            draft_emails = await _generate_draft_emails(
+                subject=subject,
+                company=company,
+                days_silent=days_silent,
+                news_items=news_items,
+                api_key=openai_api_key,
+                model=summary_model,
+            )
+
         cold_threads_with_angles.append({
             "thread_id": thread.get("id"),
             "subject": subject,
@@ -144,6 +216,7 @@ async def run_reengage_angle(input_data: Dict[str, Any], gmail_service) -> Dict[
             "days_silent": round(days_silent, 1),
             "reply_chain_length": len(messages),
             "suggested_angles": news_items,
+            "draft_emails": draft_emails,
         })
 
     quota = await enforce_and_consume_quota(input_data.get("free_tier_user_id"), len(cold_threads_with_angles))

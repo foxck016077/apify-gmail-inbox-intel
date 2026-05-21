@@ -97,8 +97,22 @@ def test_run_reengage_angle_filters_under_sla_and_generic_domains():
 
     assert result["summary"]["total_cold_threads"] == 1
     assert result["summary"]["skipped_generic_domain"] == 1
-    assert result["cold_threads_with_re_engage_angles"][0]["company_search_term"] == "stripe"
-    assert len(result["cold_threads_with_re_engage_angles"][0]["suggested_angles"]) == 1
+    cold = result["cold_threads_with_re_engage_angles"][0]
+    assert cold["company_search_term"] == "stripe"
+    assert len(cold["suggested_angles"]) == 1
+    assert cold["draft_emails"] == []  # no openai_api_key → empty
+
+
+def test_run_reengage_angle_skips_llm_when_no_api_key():
+    """Confirm LLM enrichment is gated by openai_api_key (no key = no LLM call)."""
+    threads_by_id = {"t_cold": _make_thread("t_cold", "Alex <alex@stripe.com>", 30)}
+    svc = FakeService({"threads": [{"id": "t_cold"}]}, threads_by_id)
+
+    with patch("src.reengage_angle._fetch_news_rss", return_value=[{"headline": "h", "url": "u", "pub_date": "p", "source": "s"}]):
+        with patch("src.reengage_angle.enforce_and_consume_quota", new=_fake_quota):
+            # openai_api_key omitted → no LLM call
+            result = asyncio.run(run_reengage_angle({"sla_days": 14}, svc))
+    assert result["cold_threads_with_re_engage_angles"][0]["draft_emails"] == []
 
 
 async def _fake_quota(uid, count):
