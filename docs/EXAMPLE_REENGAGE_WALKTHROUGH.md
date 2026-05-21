@@ -99,6 +99,24 @@ The most-upvoted answer (33 upvotes) was Only_Walk_3740: "re-enter with new cont
 
 The feature literally does that — `suggested_angles` is the "what changed" surface, `draft_emails` is the LLM-drafted re-entry option. The user picks; the actor proposes.
 
+## Alternative workflow — one API call instead of two
+
+If you already use `reply_metrics` to get your stalled-thread list, set `include_reengage_angles: true` and get the news headlines inline on each over-SLA thread:
+
+```bash
+apify call foxck/gmail-inbox-intel --input '{
+  "feature": "reply_metrics",
+  "oauth_token": {...},
+  "query": "in:inbox -in:sent newer_than:120d",
+  "sla_days": 14,
+  "include_reengage_angles": true
+}'
+```
+
+The `threads_over_sla` array will now have a `suggested_angles` field on each thread, populated with the same Google News headlines that the standalone `reengage_angle` feature returns. One Gmail auth, one OAuth round-trip, one run.
+
+If you don't need news headlines (just the cold-thread list), leave `include_reengage_angles` unset (defaults to `false`). Backward compatible.
+
 ## Pricing fit
 
 - **$0** open-source actor (this) — for users who already have an Apify account and want to run it themselves
