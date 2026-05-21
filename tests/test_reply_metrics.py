@@ -61,3 +61,26 @@ async def test_reply_metrics_over_sla(monkeypatch):
     assert out["summary"]["total"] == 1
     assert out["summary"]["over_sla_count"] == 1
     assert out["threads_over_sla"][0]["reply_chain_length"] == 2
+    # default include_reengage_angles=false → no suggested_angles key
+    assert "suggested_angles" not in out["threads_over_sla"][0]
+
+
+@pytest.mark.asyncio
+async def test_reply_metrics_with_reengage_angles(monkeypatch):
+    async def fake_quota(user_id, count, now=None):
+        return {"used": count}
+
+    monkeypatch.setattr(reply_metrics, "enforce_and_consume_quota", fake_quota)
+    monkeypatch.setattr(
+        reply_metrics,
+        "_fetch_news_rss",
+        lambda company, lookback, max_items: [
+            {"headline": f"{company} ships new product", "url": "https://example.com", "pub_date": "Mon", "source": "TechCrunch"}
+        ],
+    )
+    out = await reply_metrics.run_reply_metrics(
+        {"from_domains": ["foo.com"], "sla_days": 1, "max_results": 10, "include_reengage_angles": True},
+        _Svc(),
+    )
+    assert out["threads_over_sla"][0]["suggested_angles"]
+    assert "foo" in out["threads_over_sla"][0]["suggested_angles"][0]["headline"]

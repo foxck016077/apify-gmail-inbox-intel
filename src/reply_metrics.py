@@ -6,6 +6,7 @@ from statistics import mean
 from typing import Any, Dict, List
 
 from .quota import enforce_and_consume_quota
+from .reengage_angle import _company_slug_from_domain, _fetch_news_rss
 
 
 def _execute(req):
@@ -38,6 +39,9 @@ async def run_reply_metrics(input_data: Dict[str, Any], gmail_service) -> Dict[s
     max_results = int(input_data.get("max_results") or 50)
     domains = {d.lower() for d in (input_data.get("from_domains") or []) if d}
     sla_days = int(input_data.get("sla_days") or 7)
+    include_reengage_angles = bool(input_data.get("include_reengage_angles", False))
+    news_lookback_days = int(input_data.get("news_lookback_days") or 90)
+    max_news_per_thread = int(input_data.get("max_news_per_thread") or 5)
 
     list_resp = _execute(
         gmail_service.users().threads().list(userId="me", q=query, maxResults=max_results)
@@ -74,6 +78,14 @@ async def run_reply_metrics(input_data: Dict[str, Any], gmail_service) -> Dict[s
             response_hours.append((last_dt - first_dt).total_seconds() / 3600)
 
         if item["over_sla"]:
+            if include_reengage_angles:
+                company = _company_slug_from_domain(domain)
+                if company:
+                    item["suggested_angles"] = _fetch_news_rss(
+                        company, news_lookback_days, max_news_per_thread
+                    )
+                else:
+                    item["suggested_angles"] = []
             over_sla.append(item)
         else:
             responded.append(item)
