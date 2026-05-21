@@ -18,6 +18,13 @@
       ],
       "default": "thread_search"
     },
+    "dry_run": {
+      "title": "Try demo (no OAuth needed)",
+      "type": "boolean",
+      "description": "Check this on your first run. Returns a synthetic 5-thread output sample so you can see exactly what the Actor produces before setting up Gmail OAuth. Uncheck once OAuth is configured.",
+      "editor": "checkbox",
+      "default": false
+    },
     "query": {
       "title": "Gmail Query",
       "type": "string",
@@ -128,17 +135,9 @@
       "description": "Optional list of sender domains to restrict reply_metrics scope. Empty = all domains.",
       "editor": "stringList",
       "default": []
-    },
-    "dry_run": {
-      "title": "Dry Run",
-      "type": "boolean",
-      "description": "If true, validates input and auth flow without full feature execution.",
-      "editor": "checkbox",
-      "default": false
     }
   },
   "required": [
-    "feature",
-    "oauth_token"
+    "feature"
   ]
 }
