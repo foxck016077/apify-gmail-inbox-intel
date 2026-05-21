@@ -96,6 +96,7 @@ No subscription. No server-side mailbox cache. The Actor runs against the offici
 - **`reply_metrics`** — for each thread, compute reply-from-me / reply-from-others / last reply age / SLA breach flag
 - **`summarizer`** — optional OpenAI LLM thread summary (you supply your own API key)
 - **`unread_digest`** — list unread threads in last N hours, grouped by label
+- **`reengage_angle`** — for each cold/over-SLA thread, fetch recent Google News headlines about the counterparty company so you re-enter with new context, not a "just circling back" reminder. Grounded in [r/sales 1tdngew](https://www.reddit.com/r/sales/comments/1tdngew/) (49 comments, 12 mentions of "new context / what changed" as the actual re-engage demand; 0 mentions of wanting a sorted stalled-thread list). No API key required.
 
 ## Use Cases
 
@@ -121,7 +122,7 @@ The repo includes a `free_tier_user_id` quota hook for future-self if you want t
 
 | Field | Type | Required | Notes |
 |---|---|---|---|
-| `feature` | enum | yes | `thread_search` / `reply_metrics` / `summarizer` / `unread_digest` |
+| `feature` | enum | yes | `thread_search` / `reply_metrics` / `summarizer` / `unread_digest` / `reengage_angle` |
 | `oauth_token` | object | yes | `{refresh_token, client_id, client_secret}` |
 | `query` | string | no | Gmail search query (default `in:inbox`) |
 | `max_results` | integer | no | default 50, max 500 |
