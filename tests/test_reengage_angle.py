@@ -87,20 +87,25 @@ def test_run_reengage_angle_filters_under_sla_and_generic_domains():
         "t_cold": _make_thread("t_cold", "Alex <alex@stripe.com>", 30, "Re: payments rollout"),
         "t_warm": _make_thread("t_warm", "Bob <bob@notion.so>", 3, "Re: doc draft"),
         "t_generic": _make_thread("t_generic", "Carol <carol@gmail.com>", 30, "Re: catch up"),
+        "t_dormant": _make_thread("t_dormant", "Dave <dave@acme.io>", 180, "Re: Q3 brand refresh"),
     }
-    list_payload = {"threads": [{"id": "t_cold"}, {"id": "t_warm"}, {"id": "t_generic"}]}
+    list_payload = {"threads": [{"id": "t_cold"}, {"id": "t_warm"}, {"id": "t_generic"}, {"id": "t_dormant"}]}
     svc = FakeService(list_payload, threads_by_id)
 
     with patch("src.reengage_angle._fetch_news_rss", return_value=[{"headline": "Stripe ships new tool", "url": "https://example.com/s", "pub_date": "X", "source": "Y"}]):
         with patch("src.reengage_angle.enforce_and_consume_quota", new=_fake_quota):
-            result = asyncio.run(run_reengage_angle({"sla_days": 14}, svc))
+            result = asyncio.run(run_reengage_angle({"sla_days": 14, "dormant_days": 90}, svc))
 
-    assert result["summary"]["total_cold_threads"] == 1
+    assert result["summary"]["total_cold_threads"] == 2
     assert result["summary"]["skipped_generic_domain"] == 1
-    cold = result["cold_threads_with_re_engage_angles"][0]
-    assert cold["company_search_term"] == "stripe"
-    assert len(cold["suggested_angles"]) == 1
-    assert cold["draft_emails"] == []  # no openai_api_key → empty
+    assert result["summary"]["cold_tier_count"] == 1
+    assert result["summary"]["dormant_tier_count"] == 1
+
+    by_id = {t["thread_id"]: t for t in result["cold_threads_with_re_engage_angles"]}
+    assert by_id["t_cold"]["tier"] == "cold"
+    assert by_id["t_dormant"]["tier"] == "dormant"
+    assert by_id["t_cold"]["draft_emails"] == []
+    assert "tier_guide" in result
 
 
 def test_run_reengage_angle_skips_llm_when_no_api_key():

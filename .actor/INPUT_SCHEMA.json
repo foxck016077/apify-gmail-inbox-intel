@@ -86,9 +86,17 @@
     "sla_days": {
       "title": "SLA Days (reply_metrics / reengage_angle)",
       "type": "integer",
-      "description": "Days of silence after which a thread is flagged as over-SLA / cold.",
+      "description": "Days of silence after which a thread is flagged as over-SLA / cold (cold tier).",
       "default": 14,
       "minimum": 1,
+      "maximum": 365
+    },
+    "dormant_days": {
+      "title": "Dormant Days (reengage_angle)",
+      "type": "integer",
+      "description": "Threads silent this long enter the 'dormant' tier — context has faded, fresh news-grounded re-entry required (matches the 6-month-cold scenario in r/sales 1tdngew).",
+      "default": 90,
+      "minimum": 30,
       "maximum": 365
     },
     "include_reengage_angles": {

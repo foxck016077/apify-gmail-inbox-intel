@@ -164,6 +164,7 @@ async def run_reengage_angle(input_data: Dict[str, Any], gmail_service) -> Dict[
     query = input_data.get("query") or "in:inbox"
     max_results = int(input_data.get("max_results") or 30)
     sla_days = int(input_data.get("sla_days") or 14)
+    dormant_days = int(input_data.get("dormant_days") or 90)
     news_lookback_days = int(input_data.get("news_lookback_days") or 90)
     max_news_per_thread = int(input_data.get("max_news_per_thread") or 5)
     openai_api_key = (input_data.get("openai_api_key") or "").strip()
@@ -216,12 +217,15 @@ async def run_reengage_angle(input_data: Dict[str, Any], gmail_service) -> Dict[
                 model=summary_model,
             )
 
+        tier = "dormant" if days_silent >= dormant_days else "cold"
+
         cold_threads_with_angles.append({
             "thread_id": thread.get("id"),
             "subject": subject,
             "counterparty_domain": domain,
             "company_search_term": company,
             "days_silent": round(days_silent, 1),
+            "tier": tier,
             "reply_chain_length": len(messages),
             "suggested_angles": news_items,
             "draft_emails": draft_emails,
@@ -229,14 +233,24 @@ async def run_reengage_angle(input_data: Dict[str, Any], gmail_service) -> Dict[
 
     quota = await enforce_and_consume_quota(input_data.get("free_tier_user_id"), len(cold_threads_with_angles))
 
+    cold_count = sum(1 for t in cold_threads_with_angles if t["tier"] == "cold")
+    dormant_count = sum(1 for t in cold_threads_with_angles if t["tier"] == "dormant")
+
     return {
         "cold_threads_with_re_engage_angles": cold_threads_with_angles,
         "summary": {
             "total_cold_threads": len(cold_threads_with_angles),
+            "cold_tier_count": cold_count,
+            "dormant_tier_count": dormant_count,
             "skipped_generic_domain": skipped_generic_domain,
             "sla_days_threshold": sla_days,
+            "dormant_days_threshold": dormant_days,
             "news_lookback_days": news_lookback_days,
         },
         "quota": quota,
+        "tier_guide": {
+            "cold": f"{sla_days}-{dormant_days-1} days silent — soft follow-up, may still remember original context",
+            "dormant": f"{dormant_days}+ days silent — context faded, requires fresh news-grounded re-entry (OP scenario in r/sales 1tdngew)",
+        },
         "buyer_voice_grounding": "r/sales 1tdngew (49 comments) — 12 mentions of 'new context / news / what changed' as the actual re-engage demand",
     }
