@@ -13,7 +13,8 @@
         "thread_search",
         "reply_metrics",
         "summarizer",
-        "unread_digest"
+        "unread_digest",
+        "reengage_angle"
       ],
       "default": "thread_search"
     },

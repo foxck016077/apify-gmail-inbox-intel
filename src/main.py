@@ -33,6 +33,7 @@ from .gmail_client import (
     mask_secret,
 )
 from .digest import run_unread_digest
+from .reengage_angle import run_reengage_angle
 from .reply_metrics import run_reply_metrics
 from .summarizer import run_summarizer
 from .thread_search import run_thread_search
@@ -43,6 +44,7 @@ ROUTER = {
     "reply_metrics": run_reply_metrics,
     "summarizer": run_summarizer,
     "unread_digest": run_unread_digest,
+    "reengage_angle": run_reengage_angle,
 }
 
 
@@ -114,6 +116,34 @@ def _dry_run_sample(feature: str, input_data: Dict[str, Any]) -> list:
             {"label": "Clients/Acme", "unread_count": 3, "thread_ids": ["demo_t1", "demo_t4", "demo_t7"], "window_hours": 24, "dry_run": True},
             {"label": "Sales/Inbound", "unread_count": 5, "thread_ids": ["demo_t2", "demo_t8", "demo_t9", "demo_t10", "demo_t11"], "window_hours": 24, "dry_run": True},
             {"label": "Personal", "unread_count": 1, "thread_ids": ["demo_t6"], "window_hours": 24, "dry_run": True},
+        ]
+    if feature == "reengage_angle":
+        return [
+            {
+                "thread_id": "demo_t5",
+                "subject": "Re: Q3 proposal — timeline check",
+                "counterparty_domain": "acme.com",
+                "company_search_term": "acme",
+                "days_silent": 47.0,
+                "reply_chain_length": 4,
+                "suggested_angles": [
+                    {"headline": "Acme Corp announces Series B funding round to expand Q4 product launch", "url": "https://example.com/acme-series-b", "pub_date": "Wed, 14 May 2026 09:00:00 GMT", "source": "TechCrunch"},
+                    {"headline": "Acme appoints new VP of Operations from Stripe", "url": "https://example.com/acme-vp-ops", "pub_date": "Mon, 12 May 2026 11:30:00 GMT", "source": "Business Wire"},
+                ],
+                "dry_run": True,
+            },
+            {
+                "thread_id": "demo_t8",
+                "subject": "RE: Logo concepts v2 — feedback?",
+                "counterparty_domain": "studiolume.co",
+                "company_search_term": "studiolume",
+                "days_silent": 39.0,
+                "reply_chain_length": 2,
+                "suggested_angles": [
+                    {"headline": "Studio Lume launches new Asia-Pacific design office", "url": "https://example.com/lume-apac", "pub_date": "Fri, 16 May 2026 14:00:00 GMT", "source": "Design Week"},
+                ],
+                "dry_run": True,
+            },
         ]
     return [{"feature": feature, "dry_run": True, "status": "ok"}]
 
