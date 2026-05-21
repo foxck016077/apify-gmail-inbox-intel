@@ -87,7 +87,9 @@ With the actor:
 
 ## Why this matches buyer voice
 
-The `reengage_angle` feature was built specifically against the buyer voice in [r/sales 1tdngew](https://www.reddit.com/r/sales/comments/1tdngew/), where 12 of 25 substantive comments said the same thing:
+Two buyer-voice anchors, both surfaced through Reddit hot-thread caches.
+
+**Anchor 1 — re-engage tactic side**, [r/sales 1tdngew](https://www.reddit.com/r/sales/comments/1tdngew/): 49 comments, 12 of 25 substantive answers said the same thing.
 
 > "re-enter with new context, not reminders"
 
@@ -95,9 +97,48 @@ The `reengage_angle` feature was built specifically against the buyer voice in [
 
 > "Lead with what changed, not with a check in"
 
-The most-upvoted answer (33 upvotes) was Only_Walk_3740: "re-enter with new context, not reminders... share something relevant, then ask a simple, low pressure question that resets conversation."
+Most-upvoted answer (33 upvotes): "re-enter with new context, not reminders... share something relevant, then ask a simple, low pressure question that resets conversation."
 
-The feature literally does that — `suggested_angles` is the "what changed" surface, `draft_emails` is the LLM-drafted re-entry option. The user picks; the actor proposes.
+The `suggested_angles` + `draft_emails` output is that pattern in code.
+
+**Anchor 2 — buyer mental load side**, [r/smallbusiness 1td0827](https://www.reddit.com/r/smallbusiness/comments/1td0827/): 60 comments, top reply at 61 score (above the OP).
+
+> "The exhaustion usually stems from the 'switching cost' of jumping between different context layers... your brain is fried from holding 50 open loops in your head to make sure nothing slips through the cracks. The only way to lower that mental load is to move the 'memory' of the business out of your head."
+
+The walkthrough above shows that "move the memory out of your head" pattern in code: 60 threads in the inbox → 8 cold + 4 dormant → 2 drafted emails per dormant thread → solo owner picks one. The buyer no longer has to remember which Acme thread was about Q3 brand refresh vs which was about Q4 ops — the actor reconstructs the context.
+
+## Worked example 2 — small-business owner with 200 supplier threads
+
+Anchor 2 maps to a second buyer persona. Less polished story, same engine:
+
+Imagine Jordan runs a 4-person e-commerce shop. 200 active threads in inbox: suppliers, freight forwarders, ad-platform reps, customer-support escalations, contractor invoices. Jordan's SLA habit is to reply within 5 days but the dormant-thread tail builds up because Jordan forgets which Alibaba supplier sent the latest sample.
+
+```bash
+apify call foxck/gmail-inbox-intel --input '{
+  "feature": "reengage_angle",
+  "oauth_token": {...},
+  "query": "in:inbox -in:sent newer_than:180d",
+  "sla_days": 7,
+  "dormant_days": 60,
+  "max_results": 300
+}'
+```
+
+Output (summarized):
+
+```json
+{
+  "summary": {
+    "total_cold_threads": 22,
+    "total_dormant_threads": 11,
+    "skipped_generic_domain": 18
+  }
+}
+```
+
+22 cold + 11 dormant = 33 thread re-entries waiting. Jordan does not read 33 drafted emails. Jordan reads the *counts* and decides: "ok, this Friday I'm only touching the 11 dormant ones, the 22 cold can wait one more week." That decision was the 30-second action — without the actor it would have been a 90-minute "Jordan stares at inbox and gets overwhelmed" loop.
+
+That is the "memory out of your head" outcome the r/smallbusiness top-voted reply asked for. The drafted-email layer is optional; the *counts* are the load reduction.
 
 ## Alternative workflow — one API call instead of two
 
