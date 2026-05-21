@@ -55,8 +55,8 @@ A free, MIT-licensed [Apify Actor](https://apify.com/actors) for Gmail inbox wor
 
 ## 30-second start
 
-1. **Click Run** on [apify.com/foxck/gmail-inbox-intel](https://apify.com/foxck/gmail-inbox-intel) (or `apify call foxck/gmail-inbox-intel` from CLI)
-2. **Paste 3 OAuth fields** (`refresh_token`, `client_id`, `client_secret`) — see [OAUTH.md](OAUTH.md) for the 5-minute Google Cloud setup
+1. **Try the demo first** — open [apify.com/foxck/gmail-inbox-intel](https://apify.com/foxck/gmail-inbox-intel), tick the "Try demo (no OAuth needed)" checkbox, hit Run. You'll see a synthetic 5-thread sample in ~7 seconds. Zero setup.
+2. **Want real data?** Paste 3 OAuth fields (`refresh_token`, `client_id`, `client_secret`) — see [OAUTH.md](OAUTH.md) for the 5-minute Google Cloud setup, untick `dry_run`, hit Run again.
 3. **Read the dataset** — for `reply_metrics`, you get stalled threads ranked by SLA breach age, ready to paste into Friday triage
 
 No subscription. No server-side mailbox cache. The Actor runs against the official Gmail API in `readonly` scope and exits.
