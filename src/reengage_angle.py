@@ -67,17 +67,25 @@ def _fetch_news_rss(company: str, lookback_days: int = 90, max_items: int = 5) -
         title_m = re.search(r"<title><!\[CDATA\[(.+?)\]\]></title>|<title>(.+?)</title>", raw, re.DOTALL)
         link_m = re.search(r"<link>(.+?)</link>", raw)
         date_m = re.search(r"<pubDate>(.+?)</pubDate>", raw)
-        source_m = re.search(r'<source url="[^"]*">(.+?)</source>', raw)
+        source_m = re.search(r'<source[^>]*>(?:<!\[CDATA\[(.+?)\]\]>|(.+?))</source>', raw, re.DOTALL)
         title = ""
         if title_m:
-            title = title_m.group(1) or title_m.group(2) or ""
+            title = (title_m.group(1) or title_m.group(2) or "").strip()
+        # strip embedded source suffix like " - TechCrunch" Google appends
+        if title and " - " in title:
+            parts = title.rsplit(" - ", 1)
+            if len(parts[1]) < 50:  # likely a source name, not part of headline
+                title = parts[0]
+        source_val = ""
+        if source_m:
+            source_val = (source_m.group(1) or source_m.group(2) or "").strip()
         items.append({
-            "headline": title.strip(),
+            "headline": title,
             "url": (link_m.group(1).strip() if link_m else ""),
             "pub_date": (date_m.group(1).strip() if date_m else ""),
-            "source": (source_m.group(1).strip() if source_m else ""),
+            "source": source_val,
         })
-    return items
+    return [it for it in items if it["headline"]]
 
 
 def _execute(req):

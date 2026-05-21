@@ -117,3 +117,55 @@ def test_run_reengage_angle_skips_llm_when_no_api_key():
 
 async def _fake_quota(uid, count):
     return {"allowed": True, "consumed": count}
+
+
+def test_news_rss_parsing_strips_source_suffix():
+    """Google News titles often end with ' - Source Name'; strip it from headline."""
+    from src.reengage_angle import _fetch_news_rss
+    from unittest.mock import patch
+    fake_rss = """<rss><channel>
+        <item>
+            <title>Stripe ships new tool - TechCrunch</title>
+            <link>https://example.com/a</link>
+            <pubDate>Mon, 20 May 2026 10:00:00 GMT</pubDate>
+            <source url="https://techcrunch.com">TechCrunch</source>
+        </item>
+        <item>
+            <title><![CDATA[Acme closes Series B - Business Wire]]></title>
+            <link>https://example.com/b</link>
+            <pubDate>Tue, 21 May 2026 12:00:00 GMT</pubDate>
+            <source url="https://businesswire.com">Business Wire</source>
+        </item>
+    </channel></rss>"""
+
+    class _FakeResp:
+        def read(self):
+            return fake_rss.encode()
+
+    with patch("src.reengage_angle.urllib.request.urlopen", return_value=_FakeResp()):
+        items = _fetch_news_rss("stripe", 90, 5)
+
+    assert len(items) == 2
+    assert items[0]["headline"] == "Stripe ships new tool"  # source suffix stripped
+    assert items[0]["source"] == "TechCrunch"
+    assert items[1]["headline"] == "Acme closes Series B"  # CDATA + suffix both handled
+    assert items[1]["source"] == "Business Wire"
+
+
+def test_news_rss_filters_empty_headlines():
+    """Items without a parseable headline should be dropped."""
+    from src.reengage_angle import _fetch_news_rss
+    from unittest.mock import patch
+    fake_rss = """<rss><channel>
+        <item><title></title><link>x</link></item>
+        <item><title>Real headline</title><link>y</link></item>
+    </channel></rss>"""
+
+    class _FakeResp:
+        def read(self):
+            return fake_rss.encode()
+
+    with patch("src.reengage_angle.urllib.request.urlopen", return_value=_FakeResp()):
+        items = _fetch_news_rss("acme", 90, 5)
+    assert len(items) == 1
+    assert items[0]["headline"] == "Real headline"
