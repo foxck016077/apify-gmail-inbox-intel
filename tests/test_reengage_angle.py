@@ -174,3 +174,26 @@ def test_news_rss_filters_empty_headlines():
         items = _fetch_news_rss("acme", 90, 5)
     assert len(items) == 1
     assert items[0]["headline"] == "Real headline"
+
+
+def test_news_rss_respects_max_items_cap():
+    """RSS response with more items than max_items should be sliced before parsing."""
+    from src.reengage_angle import _fetch_news_rss
+    from unittest.mock import patch
+
+    item_block = "".join(
+        f"<item><title>Headline {i}</title><link>https://example.com/{i}</link>"
+        f"<pubDate>Mon, 20 May 2026 10:00:00 GMT</pubDate></item>"
+        for i in range(10)
+    )
+    fake_rss = f"<rss><channel>{item_block}</channel></rss>"
+
+    class _FakeResp:
+        def read(self):
+            return fake_rss.encode()
+
+    with patch("src.reengage_angle.urllib.request.urlopen", return_value=_FakeResp()):
+        items = _fetch_news_rss("acme", 90, 3)
+    assert len(items) == 3
+    assert items[0]["headline"] == "Headline 0"
+    assert items[2]["headline"] == "Headline 2"
