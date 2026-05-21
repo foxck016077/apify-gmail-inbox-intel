@@ -118,7 +118,7 @@ No subscription. No server-side mailbox cache. The Actor runs against the offici
 
 The repo includes a `free_tier_user_id` quota hook for future-self if you want to wrap it as a paid SaaS, but no billing layer ships with this Actor. If you'd rather pay for a setup instead of self-hosting OAuth, the [PWYW $1+ manual companion pack](https://foxck.gumroad.com/l/freelancer-gmail-tracking-pack) (now includes a 26-page bundle PDF) skips OAuth entirely.
 
-## Input Schema (8 fields)
+## Input Schema (13 fields)
 
 | Field | Type | Required | Notes |
 |---|---|---|---|
@@ -126,7 +126,12 @@ The repo includes a `free_tier_user_id` quota hook for future-self if you want t
 | `oauth_token` | object | yes | `{refresh_token, client_id, client_secret}` |
 | `query` | string | no | Gmail search query (default `in:inbox`) |
 | `max_results` | integer | no | default 50, max 500 |
-| `openai_api_key` | string | no | required only for `summarizer` |
+| `sla_days` | integer | no | default 14, for `reply_metrics` + `reengage_angle` |
+| `from_domains` | string[] | no | sender-domain whitelist for `reply_metrics` |
+| `include_reengage_angles` | boolean | no | default false; when true, `reply_metrics` returns news angles inline |
+| `news_lookback_days` | integer | no | default 90, range 7-365 |
+| `max_news_per_thread` | integer | no | default 5, range 1-20 |
+| `openai_api_key` | string | no | optional LLM key for `summarizer` and `reengage_angle` email-draft layer |
 | `summary_model` | string | no | default `gpt-4o-mini` |
 | `free_tier_user_id` | string | no | for free-tier quota tracking |
 | `dry_run` | boolean | no | skip Gmail API calls (test mode) |
