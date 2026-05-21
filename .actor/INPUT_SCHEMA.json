@@ -83,6 +83,44 @@
       "description": "Stable identifier for monthly free quota tracking in KeyValueStore.",
       "editor": "textfield"
     },
+    "sla_days": {
+      "title": "SLA Days (reply_metrics / reengage_angle)",
+      "type": "integer",
+      "description": "Days of silence after which a thread is flagged as over-SLA / cold.",
+      "default": 14,
+      "minimum": 1,
+      "maximum": 365
+    },
+    "include_reengage_angles": {
+      "title": "Include Re-engage News Angles (reply_metrics only)",
+      "type": "boolean",
+      "description": "When running `reply_metrics`, append Google News headlines about each over-SLA thread's counterparty as suggested re-engage angles. Same data the standalone `reengage_angle` feature returns, but inline. No API key required.",
+      "editor": "checkbox",
+      "default": false
+    },
+    "news_lookback_days": {
+      "title": "News Lookback Days (reengage_angle)",
+      "type": "integer",
+      "description": "How far back to search Google News for re-engage angle headlines.",
+      "default": 90,
+      "minimum": 7,
+      "maximum": 365
+    },
+    "max_news_per_thread": {
+      "title": "Max News Items Per Thread (reengage_angle)",
+      "type": "integer",
+      "description": "Cap on how many Google News headlines to return per cold thread.",
+      "default": 5,
+      "minimum": 1,
+      "maximum": 20
+    },
+    "from_domains": {
+      "title": "Filter by Sender Domains (reply_metrics only)",
+      "type": "array",
+      "description": "Optional list of sender domains to restrict reply_metrics scope. Empty = all domains.",
+      "editor": "stringList",
+      "default": []
+    },
     "dry_run": {
       "title": "Dry Run",
       "type": "boolean",
