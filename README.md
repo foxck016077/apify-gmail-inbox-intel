@@ -96,7 +96,7 @@ No subscription. No server-side mailbox cache. The Actor runs against the offici
 - **`reply_metrics`** — for each thread, compute reply-from-me / reply-from-others / last reply age / SLA breach flag
 - **`summarizer`** — optional OpenAI LLM thread summary (you supply your own API key)
 - **`unread_digest`** — list unread threads in last N hours, grouped by label
-- **`reengage_angle`** — for each cold/over-SLA thread, fetch recent Google News headlines about the counterparty company so you re-enter with new context, not a "just circling back" reminder. Grounded in [r/sales 1tdngew](https://www.reddit.com/r/sales/comments/1tdngew/) (49 comments, 12 mentions of "new context / what changed" as the actual re-engage demand; 0 mentions of wanting a sorted stalled-thread list). No API key required.
+- **`reengage_angle`** — for each cold/over-SLA thread, fetch recent Google News headlines about the counterparty company so you re-enter with new context, not a "just circling back" reminder. Optional `openai_api_key` adds an LLM layer that drafts 3 short re-engage email options grounded in those news items. Grounded in [r/sales 1tdngew](https://www.reddit.com/r/sales/comments/1tdngew/) (49 comments, 12 mentions of "new context / what changed" as the actual re-engage demand; 0 mentions of wanting a sorted stalled-thread list; 1 commenter explicitly asked for "AI to analyze context"). No API key required for the headlines layer.
 
 ## Use Cases
 
