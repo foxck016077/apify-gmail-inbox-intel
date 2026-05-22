@@ -84,6 +84,14 @@ No subscription. No server-side mailbox cache. The Actor runs against the offici
 
 **Want to see the output shape without setting up OAuth?** Set `"dry_run": true` in the input and the Actor skips Gmail entirely, emitting a 3-row synthetic dataset per feature so you can wire up downstream tooling first. See [`examples/05_dry_run_test.json`](examples/05_dry_run_test.json) or this sample run: [Apify console run JnZVfjPrexOfeoSdF](https://console.apify.com/actors/w1viWQDuCUooRYfzk/runs/88ZYxNKtcKiReuDET).
 
+## Also from this shop
+
+The 10 Gumroad listings on [foxck.gumroad.com](https://foxck.gumroad.com/) were all refreshed on Day 16 with the same build-in-public log block — every claim has a date and a number. The most adjacent to this Actor:
+
+- **[Claude Code Mastery: The Reverse-Engineering Guide](https://foxck.gumroad.com/l/claude-code-mastery)** ($49) — every env var, hook event, settings key extracted from the Claude Code v2.1.90 binary. Tested across 13 production services. The internals doc the official docs don't ship.
+- **[AI Lead Auto-Responder](https://foxck.gumroad.com/l/ai-lead-responder)** ($39) — n8n template that pairs with this Actor: this Actor scans the inbox, the Auto-Responder handles outbound replies.
+- **[5 n8n Workflows that Save 10+ Hours/Week](https://foxck.gumroad.com/l/n8n-smb-automation-pack)** ($29) — the bundle of 5 production-tested templates (lead reply, competitor scan, RSS pipeline, invoice follow-up, review drip).
+
 ⭐ **First stargazer:** thanks [@kuerdy](https://github.com/kuerdy) for the cold-start vote of confidence on 2026-05-18. First organic GitHub signal across the whole launch. If you have a Gmail-as-CRM question or just want to compare cold-start notes, the [AMA discussion](https://github.com/foxck016077/apify-gmail-inbox-intel/discussions/16) has your name on it.
 
 📖 Design notes + build log on dev.to — [**ZERO-TEN cold-start build log (16 posts)**](https://dev.to/foxck016077/series/39853):
