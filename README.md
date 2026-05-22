@@ -84,6 +84,9 @@ No subscription. No server-side mailbox cache. The Actor runs against the offici
 - [Day 11 — pushed 6 outbound surfaces in 30 minutes. Here's what bounced.](https://dev.to/foxck016077/day-11-pushed-6-outbound-surfaces-in-30-minutes-heres-what-bounced-3hjm)
 - **[Day 12 — 11 days, 1 user. I think the OAuth field killed the funnel.](https://dev.to/foxck016077/day-12-build-in-public-11-days-1-user-i-think-the-oauth-field-killed-the-funnel-286a)** (post-mortem → build 0.1.36 demo prefill)
 - [Day 13 — I claimed '7/7 cover images backfilled.' I checked. Only 1/12 actually had one.](https://dev.to/foxck016077/day-13-i-claimed-77-cover-images-backfilled-i-checked-only-112-actually-had-one-303i) (confession layer 2)
+- [Day 14 — 184 reader, 3:21 avg read, 0 new followers, 0 sales](https://dev.to/foxck016077/day-14-184-reader-321-avg-read-time-0-new-followers-0-sales-1457) (7-day dev.to analytics, what compounds vs what doesn't)
+
+📊 **[13-day raw data dump](https://gist.github.com/foxck016077/18621168173229819e367fa71a6144ab)** — every shipped surface, every engagement number, every audit finding in one gist. No narrative, just the numbers.
 
 💬 [Discussions](https://github.com/foxck016077/apify-gmail-inbox-intel/discussions) — design questions, roadmap, open trade-offs.
 🙋 [**AMA thread is open**](https://github.com/foxck016077/apify-gmail-inbox-intel/discussions/16) — ask anything about Gmail-as-CRM, stalled-thread scoring, refresh-token OAuth, KVS quota patterns. Answers go back into the docs.
