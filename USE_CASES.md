@@ -9,8 +9,9 @@
 - `from_domains=["upwork.com","contra.com"]`
 - `sla_days=7`
 - → 列出哪些 thread > 7 天沒收到客戶回覆 + 多久前最後一次互動
+- 每個 over-SLA thread 帶 `priority_band` (HOT / WARM / COLD)，summary block 給 `priority_breakdown: {HOT: 3, WARM: 5, COLD: 12}` 一眼看完今天該追幾個
 
-**Save**：每週 1-2 小時手動翻 inbox 的時間。
+**Save**：每週 1-2 小時手動翻 inbox 的時間。Friday triage 從「翻 20 行 JSON 找哪個最緊急」變「先處理 HOT 3 個 → WARM 5 個 → COLD 給 reengage_angle 跑 news-grounded 重啟」。
 
 ---
 
