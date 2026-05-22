@@ -2,7 +2,7 @@
   "actorSpecification": 1,
   "name": "gmail-inbox-intel",
   "title": "Gmail Inbox Intelligence",
-  "description": "Friday triage list of client emails gone cold — stalled threads ranked by SLA breach age. Try the demo (no OAuth, tick \"Try demo\" → synthetic sample). Then paste 3 OAuth fields for real Gmail. MIT, gmail.readonly. $19 self-host / $99 done-for-you on Gumroad.",
+  "description": "Friday triage list of client emails gone cold — over-SLA Gmail threads bucketed HOT / WARM / COLD by days silent vs SLA. Try the demo (no OAuth, tick \"Try demo\" → synthetic sample). Then paste 3 OAuth fields for real Gmail. MIT, gmail.readonly. $19 self-host / $99 done-for-you on Gumroad.",
   "version": "0.1",
   "buildTag": "latest",
   "meta": {
