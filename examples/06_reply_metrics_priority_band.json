@@ -1,0 +1,13 @@
+{
+  "_comment": "Friday triage with HOT/WARM/COLD bands. dry_run=true returns synthetic 4-thread sample with all 3 bands present (1 not-over-SLA + 1 HOT + 1 WARM + 1 COLD). Switch dry_run to false and paste your OAuth fields to run against real Gmail.",
+  "feature": "reply_metrics",
+  "dry_run": true,
+  "query": "from:(client-1.com OR client-2.com) newer_than:30d",
+  "max_results": 50,
+  "sla_days": 7,
+  "oauth_token": {
+    "refresh_token": "1//0gAAAA-replace-with-your-refresh-token",
+    "client_id": "1234567890-abc.apps.googleusercontent.com",
+    "client_secret": "GOCSPX-replace-with-your-client-secret"
+  }
+}
