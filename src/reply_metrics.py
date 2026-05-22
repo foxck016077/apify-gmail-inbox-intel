@@ -23,6 +23,17 @@ def _dt_from_ms(ms: str | None) -> datetime:
     return datetime.fromtimestamp(v, tz=timezone.utc)
 
 
+def _priority_band(days_since: float, sla_days: int) -> str:
+    if sla_days <= 0:
+        return "COLD"
+    ratio = days_since / sla_days
+    if ratio < 1.5:
+        return "HOT"
+    if ratio < 3:
+        return "WARM"
+    return "COLD"
+
+
 def _thread_sender_domain(thread: Dict[str, Any]) -> str:
     first = (thread.get("messages") or [{}])[0]
     headers = first.get("payload", {}).get("headers", [])
@@ -64,14 +75,17 @@ async def run_reply_metrics(input_data: Dict[str, Any], gmail_service) -> Dict[s
             continue
         last_dt = _dt_from_ms(messages[-1].get("internalDate"))
         days_since = (now - last_dt).total_seconds() / 86400
+        over = days_since > sla_days
         item = {
             "thread_id": thread.get("id"),
             "last_message_at": last_dt.isoformat(),
             "days_since_last_reply": round(days_since, 2),
-            "over_sla": days_since > sla_days,
+            "over_sla": over,
             "reply_chain_length": len(messages),
             "sender_domain": domain,
         }
+        if over:
+            item["priority_band"] = _priority_band(days_since, sla_days)
 
         if len(messages) >= 2:
             first_dt = _dt_from_ms(messages[0].get("internalDate"))
@@ -92,12 +106,19 @@ async def run_reply_metrics(input_data: Dict[str, Any], gmail_service) -> Dict[s
 
     quota = await enforce_and_consume_quota(input_data.get("free_tier_user_id"), len(over_sla) + len(responded))
 
+    priority_breakdown = {"HOT": 0, "WARM": 0, "COLD": 0}
+    for t in over_sla:
+        band = t.get("priority_band")
+        if band in priority_breakdown:
+            priority_breakdown[band] += 1
+
     return {
         "threads_over_sla": over_sla,
         "threads_responded": responded,
         "summary": {
             "total": len(over_sla) + len(responded),
             "over_sla_count": len(over_sla),
+            "priority_breakdown": priority_breakdown,
             "avg_response_hours": round(mean(response_hours), 2) if response_hours else 0,
         },
         "quota": quota,

@@ -42,16 +42,22 @@ A free, MIT-licensed [Apify Actor](https://apify.com/actors) for Gmail inbox wor
 ```json
 {
   "thread_id": "18c4f...",
-  "subject": "Re: Q3 redesign proposal",
-  "last_external_sender": "jane@acme.com",
-  "your_last_reply_at": "2026-04-28T09:14:00Z",
-  "days_since_your_reply": 11,
-  "sla_breach_days": 4,
-  "stalled_score": 0.81
+  "last_message_at": "2026-04-28T09:14:00Z",
+  "days_since_last_reply": 9.2,
+  "over_sla": true,
+  "priority_band": "HOT",
+  "reply_chain_length": 4,
+  "sender_domain": "acme.com"
 }
 ```
 
-`stalled_score` ranks the most actionable threads to the top of your Friday triage. See [`examples/05_dry_run_test.json`](examples/05_dry_run_test.json) for a full synthetic run.
+The summary block tells you `priority_breakdown: {HOT: 3, WARM: 5, COLD: 12}` for an at-a-glance Friday triage:
+
+- **HOT** — past SLA but recent (ratio < 1.5×). Standard polite bump still works.
+- **WARM** — well past SLA (1.5× to 3×). Needs context refresh, not just a ping.
+- **COLD** — deep stale (3×+). Use `reengage_angle` for fresh-news re-entry.
+
+See [`examples/05_dry_run_test.json`](examples/05_dry_run_test.json) for a full synthetic run.
 
 ## 30-second start
 

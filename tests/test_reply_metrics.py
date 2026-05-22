@@ -84,3 +84,18 @@ async def test_reply_metrics_with_reengage_angles(monkeypatch):
     )
     assert out["threads_over_sla"][0]["suggested_angles"]
     assert "foo" in out["threads_over_sla"][0]["suggested_angles"][0]["headline"]
+
+
+def test_priority_band():
+    from src.reply_metrics import _priority_band
+    # HOT: ratio < 1.5
+    assert _priority_band(8, 7) == "HOT"
+    assert _priority_band(10, 7) == "HOT"
+    # WARM: 1.5 <= ratio < 3
+    assert _priority_band(11, 7) == "WARM"
+    assert _priority_band(20, 7) == "WARM"
+    # COLD: ratio >= 3
+    assert _priority_band(21, 7) == "COLD"
+    assert _priority_band(60, 14) == "COLD"
+    # edge case: sla_days = 0
+    assert _priority_band(5, 0) == "COLD"

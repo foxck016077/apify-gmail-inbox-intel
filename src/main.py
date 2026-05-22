@@ -104,8 +104,9 @@ def _dry_run_sample(feature: str, input_data: Dict[str, Any]) -> list:
     if feature == "reply_metrics":
         return [
             {"thread_id": "demo_t1", "subject": "Re: Q3 proposal — timeline check", "reply_from_me": 2, "reply_from_others": 2, "last_reply_age_days": 2, "sla_breach": False, "dry_run": True},
-            {"thread_id": "demo_t4", "subject": "Onboarding docs — pending", "reply_from_me": 3, "reply_from_others": 0, "last_reply_age_days": 9, "sla_breach": True, "sla_threshold_days": 7, "dry_run": True},
-            {"thread_id": "demo_t5", "subject": "Re: Contract terms", "reply_from_me": 1, "reply_from_others": 0, "last_reply_age_days": 18, "sla_breach": True, "sla_threshold_days": 7, "dry_run": True},
+            {"thread_id": "demo_t4", "subject": "Onboarding docs — pending", "reply_from_me": 3, "reply_from_others": 0, "last_reply_age_days": 9, "sla_breach": True, "sla_threshold_days": 7, "priority_band": "HOT", "dry_run": True},
+            {"thread_id": "demo_t5", "subject": "Re: Contract terms", "reply_from_me": 1, "reply_from_others": 0, "last_reply_age_days": 18, "sla_breach": True, "sla_threshold_days": 7, "priority_band": "WARM", "dry_run": True},
+            {"thread_id": "demo_t6", "subject": "Re: Long-cold proposal follow-up", "reply_from_me": 1, "reply_from_others": 0, "last_reply_age_days": 32, "sla_breach": True, "sla_threshold_days": 7, "priority_band": "COLD", "dry_run": True},
         ]
     if feature == "summarizer":
         return [
