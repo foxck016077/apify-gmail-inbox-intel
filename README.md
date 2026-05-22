@@ -21,7 +21,7 @@
   <a href="#privacy--oauth"><img src="https://img.shields.io/badge/OAuth-refresh--token--only-green.svg" alt="OAuth: refresh-token-only" /></a>
   <a href="https://developers.google.com/gmail/api/auth/scopes"><img src="https://img.shields.io/badge/Gmail%20scope-readonly-blue.svg" alt="Scope: gmail.readonly" /></a>
   <a href="https://dev.to/foxck016077/series/39853"><img src="https://img.shields.io/badge/dev.to-16%20build--log%20posts-black?logo=devdotto" alt="dev.to series" /></a>
-  <a href="https://apify.com/foxck/gmail-inbox-intel"><img src="https://img.shields.io/badge/Apify%20Store-0.1.26-orange" alt="Apify Store build 0.1.26" /></a>
+  <a href="https://apify.com/foxck/gmail-inbox-intel"><img src="https://img.shields.io/badge/Apify%20Store-0.1.36-orange" alt="Apify Store build 0.1.36" /></a>
   <a href="https://github.com/apify/apify-docs/pull/2549"><img src="https://img.shields.io/badge/upstream-apify%2Fapify--docs%232549-blue" alt="Upstream PR apify/apify-docs#2549" /></a>
 </p>
 
@@ -80,6 +80,10 @@ No subscription. No server-side mailbox cache. The Actor runs against the offici
 - [Day 9 — a 41k-follower Douyin AI-agent creator showed me what I'm missing](https://dev.to/foxck016077/day-9-a-41k-follower-douyin-ai-agent-creator-showed-me-what-im-missing-e3c)
 - [Day 9 — PWYW vs $99 lifetime: a back-of-envelope answer to @tokidigital's pricing question](https://dev.to/foxck016077/pwyw-vs-99-lifetime-a-back-of-envelope-answer-to-tokidigitals-pricing-question-5ebl)
 - **[Day 9 — How to set up refresh-token-only OAuth for a multi-tenant Apify Actor (Gmail, 10 minutes)](https://dev.to/foxck016077/how-to-set-up-refresh-token-only-oauth-for-a-multi-tenant-apify-actor-gmail-10-minutes-2l6l)** (reader-centric tutorial; PR'd upstream to [apify/apify-docs#2549](https://github.com/apify/apify-docs/pull/2549))
+- [Day 10 — I almost sunset my $10 push. Then I checked the demand-source first.](https://dev.to/foxck016077/day-10-i-almost-sunset-my-10-push-then-i-checked-the-demand-source-first-1l0p)
+- [Day 11 — pushed 6 outbound surfaces in 30 minutes. Here's what bounced.](https://dev.to/foxck016077/day-11-pushed-6-outbound-surfaces-in-30-minutes-heres-what-bounced-3hjm)
+- **[Day 12 — 11 days, 1 user. I think the OAuth field killed the funnel.](https://dev.to/foxck016077/day-12-build-in-public-11-days-1-user-i-think-the-oauth-field-killed-the-funnel-286a)** (post-mortem → build 0.1.36 demo prefill)
+- [Day 13 — I claimed '7/7 cover images backfilled.' I checked. Only 1/12 actually had one.](https://dev.to/foxck016077/day-13-i-claimed-77-cover-images-backfilled-i-checked-only-112-actually-had-one-303i) (confession layer 2)
 
 💬 [Discussions](https://github.com/foxck016077/apify-gmail-inbox-intel/discussions) — design questions, roadmap, open trade-offs.
 🙋 [**AMA thread is open**](https://github.com/foxck016077/apify-gmail-inbox-intel/discussions/16) — ask anything about Gmail-as-CRM, stalled-thread scoring, refresh-token OAuth, KVS quota patterns. Answers go back into the docs.
