@@ -21,7 +21,8 @@
   <a href="#privacy--oauth"><img src="https://img.shields.io/badge/OAuth-refresh--token--only-green.svg" alt="OAuth: refresh-token-only" /></a>
   <a href="https://developers.google.com/gmail/api/auth/scopes"><img src="https://img.shields.io/badge/Gmail%20scope-readonly-blue.svg" alt="Scope: gmail.readonly" /></a>
   <a href="https://dev.to/foxck016077/series/39853"><img src="https://img.shields.io/badge/dev.to-16%20build--log%20posts-black?logo=devdotto" alt="dev.to series" /></a>
-  <a href="https://apify.com/foxck/gmail-inbox-intel"><img src="https://img.shields.io/badge/Apify%20Store-0.1.36-orange" alt="Apify Store build 0.1.36" /></a>
+  <a href="https://apify.com/foxck/gmail-inbox-intel"><img src="https://img.shields.io/badge/Apify%20Store-0.1.38-orange" alt="Apify Store build 0.1.38" /></a>
+  <a href="https://dev.to/foxck016077/day-16-51-reader-spike-in-85-min-on-devto-0-sales-heres-what-actually-moved-4hc3"><img src="https://img.shields.io/badge/Day%2016-245%20readers%20%2F%200%20sales-red" alt="Day 16 receipts" /></a>
   <a href="https://github.com/apify/apify-docs/pull/2549"><img src="https://img.shields.io/badge/upstream-apify%2Fapify--docs%232549-blue" alt="Upstream PR apify/apify-docs#2549" /></a>
 </p>
 
@@ -30,6 +31,20 @@
 </p>
 
 A free, MIT-licensed [Apify Actor](https://apify.com/actors) for Gmail inbox workflow analytics — thread search, reply tracking, LLM summary, unread digest. Built on `gmail.readonly` OAuth scope. **Not a scraper, not a bulk sender, not a mailbox archiver.**
+
+## Build-in-public status (2026-05-22, Day 16)
+
+```
+days shipped:        16
+dev.to articles:     21
+dev.to readers/wk:   245
+dev.to followers:    0
+Gumroad sales:       0
+Apify Actor runs:    8  (0 external users)
+GitHub stars:        1  (thank you @kuerdy)
+```
+
+Every number is live and honest. Latest post-mortem: [Day 16 — +51 reader spike in 85 min, 0 sales, here's what actually moved](https://dev.to/foxck016077/day-16-51-reader-spike-in-85-min-on-devto-0-sales-heres-what-actually-moved-4hc3). This README updates daily. If anything below looks rotten or out of date, file an issue and I'll fix it.
 
 ## Who this is for
 
