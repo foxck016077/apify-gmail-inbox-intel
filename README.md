@@ -76,7 +76,8 @@ See [`examples/05_dry_run_test.json`](examples/05_dry_run_test.json) for a full 
 
 ## 30-second start
 
-1. **Try the demo first** — open [apify.com/foxck/gmail-inbox-intel](https://apify.com/foxck/gmail-inbox-intel), tick the "Try demo (no OAuth needed)" checkbox, hit Run. You'll see a synthetic 5-thread sample in ~7 seconds. Zero setup.
+0. **See the sample output first (anon, no signup)** — open [the Friday Triage gist](https://gist.github.com/foxck016077/a21454f7bb4f04d3550b0a606712f293) — anonymized 10-thread HOT / WARM / COLD output, the exact shape you'd get back. Open in any browser, no login required. Decide whether the *output* is worth the *execution setup* before signing up anywhere.
+1. **Run the Actor yourself** — open [apify.com/foxck/gmail-inbox-intel](https://apify.com/foxck/gmail-inbox-intel) (requires a free Apify account — that's the friction layer I caught myself overselling earlier), tick the "Try demo (no OAuth needed)" checkbox, hit Run. You'll see a synthetic 5-thread sample in ~7 seconds.
 2. **Want real data?** Paste 3 OAuth fields (`refresh_token`, `client_id`, `client_secret`) — see [OAUTH.md](OAUTH.md) for the 5-minute Google Cloud setup, untick `dry_run`, hit Run again.
 3. **Read the dataset** — for `reply_metrics`, you get stalled threads ranked by SLA breach age, ready to paste into Friday triage
 
