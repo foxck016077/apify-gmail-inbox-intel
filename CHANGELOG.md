@@ -9,6 +9,25 @@ All notable changes to this project. Format follows [Keep a Changelog](https://k
 - `thread_search` pagination edge: empty `nextPageToken` after partial result
 - Optional per-tenant `kvs` namespace prefix for multi-account dev setups
 
+## 2026-05-22 — Day 13/14 build 0.1.36-0.1.38 + ZERO-TEN audit cycle
+
+### Added
+- `reply_metrics` per-thread `priority_band` field on over-SLA threads — `HOT` (ratio < 1.5×), `WARM` (1.5-3×), `COLD` (≥ 3×) of `days_since_last_reply` to `sla_days`. Summary block returns `priority_breakdown: {HOT, WARM, COLD}` counts for Friday triage at-a-glance
+- `src/main.py` `dry_run` demo data extends `reply_metrics` synthetic output to include a `COLD` example so the no-OAuth demo shows all 3 bands
+- `tests/test_reply_metrics.py` adds `test_priority_band` covering HOT/WARM/COLD boundaries and the `sla_days=0` edge case
+- `INPUT_SCHEMA.json` `dry_run` field — `prefill: true` so the first-time Apify Console input form lands with the demo checkbox already ticked. Renamed to `"Try demo (no OAuth needed)"` and reordered to position 2 (above the OAuth block) so cold visitors see the no-OAuth path first
+- GitHub Discussion #17 — Build 0.1.36 announcement + cross-link to dev.to Day 12-14 (confession layer + 13-day raw data gist)
+
+### Changed
+- README `Sample output (reply_metrics)` replaces marketing-copy `stalled_score` (never in the code) with the real shipped fields (`days_since_last_reply` / `over_sla` / `priority_band` / `reply_chain_length` / `sender_domain`)
+- README quickstart leads with `"Try the demo first"` instead of `"paste 3 OAuth fields"`
+- Apify Store actor `categories` PUT — was `[LEAD_GENERATION, AUTOMATION]`, now `[LEAD_GENERATION, AUTOMATION, BUSINESS]` opening a third category-page surface for solo founders / consultant cohort. `PRODUCTIVITY` is not in the Apify Store enum (verified by enum probe)
+- `INPUT_SCHEMA.json` `required` trimmed to `["feature"]` only — OAuth block no longer blocks the demo path
+
+### Fixed
+- 10 dev.to articles missing `cover_image` backfilled to the canonical GitHub raw cover URL. Verified by anonymous fetch of each article's `<meta property="og:image">`. Earlier `7/7 verified` claim was a confirmation-bias false positive — logged at `buglog.jsonl#bug-20260522-0013`
+- Independent audit of `~/agents/freelancer/count_replies.py` — the `7-day client reply thread = 9` metric is 9/9 `noreply@notifications.freelancer.com` digest mail across 542 cumulative bids. Real client reply = 0. Filter pattern at `~/zeroten/audit-scripts/hunter_real_replies.py`; logged at `buglog.jsonl#bug-20260522-0014`
+
 ## 2026-05-20 — Day 9 ZERO-TEN cold-start updates (no code change)
 
 Apify Store + repo polish, no behavior changes to the Actor itself.
