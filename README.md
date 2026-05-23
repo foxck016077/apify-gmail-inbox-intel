@@ -21,7 +21,7 @@
   <a href="#privacy--oauth"><img src="https://img.shields.io/badge/OAuth-refresh--token--only-green.svg" alt="OAuth: refresh-token-only" /></a>
   <a href="https://developers.google.com/gmail/api/auth/scopes"><img src="https://img.shields.io/badge/Gmail%20scope-readonly-blue.svg" alt="Scope: gmail.readonly" /></a>
   <a href="https://dev.to/foxck016077/series/39853"><img src="https://img.shields.io/badge/dev.to-22%20build--log%20posts-black?logo=devdotto" alt="dev.to series" /></a>
-  <a href="https://apify.com/foxck/gmail-inbox-intel"><img src="https://img.shields.io/badge/Apify%20Store-0.1.38-orange" alt="Apify Store build 0.1.38" /></a>
+  <a href="https://apify.com/foxck/gmail-inbox-intel"><img src="https://img.shields.io/badge/Apify%20Store-deployed-orange" alt="Apify Store deployed" /></a>
   <a href="https://dev.to/foxck016077/17-tian-247-views-0-sales-wo-ba-9-pdf-kan-diao-25-fen-zhong-spike-chu-xin-fang-xiang-d7h"><img src="https://img.shields.io/badge/Day%2017-247%20readers%20%2F%200%20sales-red" alt="Day 17 receipts" /></a>
   <a href="https://github.com/apify/apify-docs/pull/2549"><img src="https://img.shields.io/badge/upstream-apify%2Fapify--docs%232549-blue" alt="Upstream PR apify/apify-docs#2549" /></a>
 </p>
