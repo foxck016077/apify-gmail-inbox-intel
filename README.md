@@ -20,9 +20,9 @@
   <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.10+-blue.svg" alt="Python 3.10+" /></a>
   <a href="#privacy--oauth"><img src="https://img.shields.io/badge/OAuth-refresh--token--only-green.svg" alt="OAuth: refresh-token-only" /></a>
   <a href="https://developers.google.com/gmail/api/auth/scopes"><img src="https://img.shields.io/badge/Gmail%20scope-readonly-blue.svg" alt="Scope: gmail.readonly" /></a>
-  <a href="https://dev.to/foxck016077/series/39853"><img src="https://img.shields.io/badge/dev.to-16%20build--log%20posts-black?logo=devdotto" alt="dev.to series" /></a>
+  <a href="https://dev.to/foxck016077/series/39853"><img src="https://img.shields.io/badge/dev.to-22%20build--log%20posts-black?logo=devdotto" alt="dev.to series" /></a>
   <a href="https://apify.com/foxck/gmail-inbox-intel"><img src="https://img.shields.io/badge/Apify%20Store-0.1.38-orange" alt="Apify Store build 0.1.38" /></a>
-  <a href="https://dev.to/foxck016077/day-16-51-reader-spike-in-85-min-on-devto-0-sales-heres-what-actually-moved-4hc3"><img src="https://img.shields.io/badge/Day%2016-245%20readers%20%2F%200%20sales-red" alt="Day 16 receipts" /></a>
+  <a href="https://dev.to/foxck016077/17-tian-247-views-0-sales-wo-ba-9-pdf-kan-diao-25-fen-zhong-spike-chu-xin-fang-xiang-d7h"><img src="https://img.shields.io/badge/Day%2017-247%20readers%20%2F%200%20sales-red" alt="Day 17 receipts" /></a>
   <a href="https://github.com/apify/apify-docs/pull/2549"><img src="https://img.shields.io/badge/upstream-apify%2Fapify--docs%232549-blue" alt="Upstream PR apify/apify-docs#2549" /></a>
 </p>
 
@@ -32,19 +32,20 @@
 
 A free, MIT-licensed [Apify Actor](https://apify.com/actors) for Gmail inbox workflow analytics — thread search, reply tracking, LLM summary, unread digest. Built on `gmail.readonly` OAuth scope. **Not a scraper, not a bulk sender, not a mailbox archiver.**
 
-## Build-in-public status (2026-05-22, Day 16)
+## Build-in-public status (2026-05-23, Day 17)
 
 ```
-days shipped:        16
-dev.to articles:     21
-dev.to readers/wk:   245
+days shipped:        17
+dev.to articles:     22
+dev.to readers/wk:   247
 dev.to followers:    0
 Gumroad sales:       0
 Apify Actor runs:    8  (0 external users)
 GitHub stars:        1  (thank you @kuerdy)
+real reader replies: 2  (tokidigital + dimagious, public threads)
 ```
 
-Every number is live and honest. Latest post-mortem: [Day 16 — +51 reader spike in 85 min, 0 sales, here's what actually moved](https://dev.to/foxck016077/day-16-51-reader-spike-in-85-min-on-devto-0-sales-heres-what-actually-moved-4hc3). This README updates daily. If anything below looks rotten or out of date, file an issue and I'll fix it.
+Every number is live and honest. Latest post-mortem: [Day 17 — cut the $9 PDF, 25-min spike out a new direction](https://dev.to/foxck016077/17-tian-247-views-0-sales-wo-ba-9-pdf-kan-diao-25-fen-zhong-spike-chu-xin-fang-xiang-d7h). Two real readers replied to my dev.to log in week 2: [tokidigital's PWYW-vs-$99 pricing question](https://dev.to/foxck016077/pwyw-vs-99-lifetime-a-back-of-envelope-answer-to-tokidigitals-pricing-question-5ebl) (substantive 300-word reader comment) and [dimagious's "first 30 seconds" thread](https://dev.to/dimagious/the-first-30-seconds-why-my-ai-extension-lost-users-before-the-ai-even-ran-2inb) (reciprocal reply 27h after my outbound comment). Both are public — read them in full before paying anything. This README updates daily. If anything below looks rotten or out of date, file an issue and I'll fix it.
 
 ## Who this is for
 
@@ -87,7 +88,7 @@ No subscription. No server-side mailbox cache. The Actor runs against the offici
 
 ## Also from this shop
 
-The 10 Gumroad listings on [foxck.gumroad.com](https://foxck.gumroad.com/) were all refreshed on Day 16 with the same build-in-public log block — every claim has a date and a number. The most adjacent to this Actor:
+The 10 Gumroad listings on [foxck.gumroad.com](https://foxck.gumroad.com/) were all refreshed on Day 17 with the same build-in-public log block and 2 real reader thread links — every claim has a date and a number. The most adjacent to this Actor:
 
 - **[Claude Code Mastery: The Reverse-Engineering Guide](https://foxck.gumroad.com/l/claude-code-mastery)** ($49) — every env var, hook event, settings key extracted from the Claude Code v2.1.90 binary. Tested across 13 production services. The internals doc the official docs don't ship.
 - **[AI Lead Auto-Responder](https://foxck.gumroad.com/l/ai-lead-responder)** ($39) — n8n template that pairs with this Actor: this Actor scans the inbox, the Auto-Responder handles outbound replies.
@@ -223,7 +224,7 @@ Have an opinion on what `v0.2` should look like before it ships? Open [Discussio
 
 <!-- pbot-cross-link-v1 -->
 
-After 17 days of building this in public (21 dev.to articles / 247 readers / 0 sales), I learned: PDFs don't form daily-use dependencies. Workflow products do.
+After 17 days of building this in public (22 dev.to articles / 247 readers / 0 sales), I learned: PDFs don't form daily-use dependencies. Workflow products do.
 
 Currently building **[pbot](https://foxck.gumroad.com/l/xkaemm)** — a one-click personal knowledge bot you install on your own computer, talk to from LINE / Telegram / Zalo on your phone. Your local files + cloud notes → searchable knowledge base, all running on your machine.
 
