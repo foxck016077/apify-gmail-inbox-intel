@@ -219,6 +219,21 @@ Existing competitor landscape (verified 2026-05-20): Mailbutler ($4–$11/mo, tr
 
 Have an opinion on what `v0.2` should look like before it ships? Open [Discussion #16](https://github.com/foxck016077/apify-gmail-inbox-intel/discussions/16).
 
+## What I'm building next — pbot
+
+<!-- pbot-cross-link-v1 -->
+
+After 17 days of building this in public (21 dev.to articles / 247 readers / 0 sales), I learned: PDFs don't form daily-use dependencies. Workflow products do.
+
+Currently building **[pbot](https://foxck.gumroad.com/l/xkaemm)** — a one-click personal knowledge bot you install on your own computer, talk to from LINE / Telegram / Zalo on your phone. Your local files + cloud notes → searchable knowledge base, all running on your machine.
+
+- 25-min spike already passes 3 end-to-end queries (Anthropic real call, 0 hallucination on out-of-scope, source citations 100% accurate)
+- vs Khoj 30,869 stars: binary one-click (no Python env), LINE + Zalo support (Vietnam/Taiwan edge), Chinese-native onboarding
+- Free waitlist ($0 PWYW) → first-100 -30% early-bird ($29 → $20)
+- Build log continues — honest numbers every week
+
+[Join the pbot waitlist →](https://foxck.gumroad.com/l/xkaemm)
+
 ## License
 
 MIT — see `LICENSE`.
