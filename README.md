@@ -96,7 +96,7 @@ The 10 Gumroad listings on [foxck.gumroad.com](https://foxck.gumroad.com/) were 
 
 ⭐ **First stargazer:** thanks [@kuerdy](https://github.com/kuerdy) for the cold-start vote of confidence on 2026-05-18. First organic GitHub signal across the whole launch. If you have a Gmail-as-CRM question or just want to compare cold-start notes, the [AMA discussion](https://github.com/foxck016077/apify-gmail-inbox-intel/discussions/16) has your name on it.
 
-📖 Design notes + build log on dev.to — [**ZERO-TEN cold-start build log (16 posts)**](https://dev.to/foxck016077/series/39853):
+📖 Design notes + build log on dev.to — [**ZERO-TEN cold-start build log (23 posts)**](https://dev.to/foxck016077/series/39853):
 - [Apify Actor for Gmail inbox analytics: refresh-token-only OAuth, async router, per-feature quota](https://dev.to/foxck016077/an-apify-actor-for-gmail-inbox-analytics-a-refresh-token-only-oauth-async-router-per-feature-pi2)
 - [Gmail OAuth client_id is not a secret — design notes for self-host Actors](https://dev.to/foxck016077/gmail-oauth-clientid-is-not-a-secret-a-design-notes-for-self-host-actors-19af)
 - [Why refresh-token-only OAuth for a multi-tenant Apify Actor](https://dev.to/foxck016077/why-i-picked-refresh-token-only-oauth-for-a-multi-tenant-apify-actor-265c)
@@ -116,6 +116,10 @@ The 10 Gumroad listings on [foxck.gumroad.com](https://foxck.gumroad.com/) were 
 - **[Day 12 — 11 days, 1 user. I think the OAuth field killed the funnel.](https://dev.to/foxck016077/day-12-build-in-public-11-days-1-user-i-think-the-oauth-field-killed-the-funnel-286a)** (post-mortem → build 0.1.36 demo prefill)
 - [Day 13 — I claimed '7/7 cover images backfilled.' I checked. Only 1/12 actually had one.](https://dev.to/foxck016077/day-13-i-claimed-77-cover-images-backfilled-i-checked-only-112-actually-had-one-303i) (confession layer 2)
 - [Day 14 — 184 reader, 3:21 avg read, 0 new followers, 0 sales](https://dev.to/foxck016077/day-14-184-reader-321-avg-read-time-0-new-followers-0-sales-1457) (7-day dev.to analytics, what compounds vs what doesn't)
+- [Day 15 — I posted comments on other people's articles instead of writing](https://dev.to/foxck016077/day-15-i-posted-comments-on-other-peoples-articles-instead-of-writing-my-own-3l9k)
+- [Day 16 — +51 reader spike in 85 min on dev.to. 0 sales.](https://dev.to/foxck016077/day-16-51-reader-spike-in-85-min-on-devto-0-sales-heres-what-the-analytics-actually-say-32i6)
+- **[Day 17 — 17 天 / 247 views / 0 sales — 我把 $9 PDF 砍掉，25 分鐘 spike 出新方向](https://dev.to/foxck016077/17-tian-247-views-0-sales-wo-ba-9-pdf-kan-diao-25-fen-zhong-spike-chu-xin-fang-xiang-d7h)** (pivot to pbot)
+- **[Day 18 — SQLite FTS5 won't tokenize Chinese — here's the 7-line bigram fix](https://dev.to/foxck016077/sqlite-fts5-wont-tokenize-chinese-heres-the-7-line-bigram-fix-that-did-4fcc)** (CJK search deep dive)
 
 📊 **[13-day raw data dump](https://gist.github.com/foxck016077/18621168173229819e367fa71a6144ab)** — every shipped surface, every engagement number, every audit finding in one gist. No narrative, just the numbers.
 
