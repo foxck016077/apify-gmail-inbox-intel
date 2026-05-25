@@ -158,7 +158,7 @@ The 10 Gumroad listings on [foxck.gumroad.com](https://foxck.gumroad.com/) were 
 
 **Free.** MIT licensed. Run it on Apify (their compute-unit pricing applies — usually pennies per run) or fork and run on your own box.
 
-The repo includes a `free_tier_user_id` quota hook for future-self if you want to wrap it as a paid SaaS, but no billing layer ships with this Actor. If you'd rather pay for a setup instead of self-hosting OAuth, the [PWYW $1+ manual companion pack](https://foxck.gumroad.com/l/freelancer-gmail-tracking-pack) (now includes a 26-page bundle PDF) skips OAuth entirely.
+The repo includes a `free_tier_user_id` quota hook for future-self if you want to wrap it as a paid SaaS, but no billing layer ships with this Actor. If you'd rather pay for a setup instead of self-hosting OAuth, the [$19 Self-Host Bundle](https://foxck.gumroad.com/l/freelancer-gmail-tracking-pack) (includes a 26-page bundle PDF) skips OAuth entirely.
 
 ## Input Schema (13 fields)
 
